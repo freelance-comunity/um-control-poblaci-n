@@ -189,6 +189,9 @@ return [
         // Sweet alert
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
+        // Spatie roles
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ],
 
     /*
