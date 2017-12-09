@@ -41,9 +41,20 @@
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group pmd-textfield pmd-textfield-floating-label">
           <label for="regular1" class="control-label">
-            Contraseña*
+            Plantel*
           </label>
           {!! Form::select('campuses_id', $campus, null, ['class' => 'form-control']) !!} {!! $errors->first('password', '
+          <p class="help-block">:message</p>') !!}
+        </div>
+      </div>
+    </div>
+    <div class="group-fields clearfix row {{ $errors->has('role') ? 'has-error' : ''}}">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+          <label for="regular1" class="control-label">
+            Plantel*
+          </label>
+          {!! Form::select('role', $roles, null, ['class' => 'form-control']) !!} {!! $errors->first('roles', '
           <p class="help-block">:message</p>') !!}
         </div>
       </div>

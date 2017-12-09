@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Campus;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use Alert;
 
-class CampusController extends Controller
+class RolesController extends Controller
 {
     public function __construct()
     {
@@ -26,9 +26,9 @@ class CampusController extends Controller
      */
     public function index()
     {
-        $campus = Campus::paginate(5);
+        $roles = Role::paginate(5);
 
-        return view('backEnd.admin.campus.index', compact('campus'));
+        return view('backEnd.admin.roles.index', compact('roles'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CampusController extends Controller
      */
     public function create()
     {
-        return view('backEnd.admin.campus.create');
+        return view('backEnd.admin.roles.create');
     }
 
     /**
@@ -49,17 +49,15 @@ class CampusController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->validate($request, ['name' => 'required', 'address' => 'required', 'postal_code' => 'required', 'status' => 'required', ]);
+            $this->validate($request, ['name' => 'required', ]);
+            Role::create($request->all());
 
-            Campus::create($request->all());
+            Alert::success('Rol creado exitosamente!');
 
-            Alert::success('Plantel creado exitosamente!')->persistent("Cerrar");
-
-            return redirect('admin/campus');
+            return redirect('roles');
         } catch (\Exception $e) {
             Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-
-            return redirect('admin/campus');
+            return redirect('roles');
         }
     }
 
@@ -72,9 +70,9 @@ class CampusController extends Controller
      */
     public function show($id)
     {
-        $campus = Campus::findOrFail($id);
+        $role = Role::findOrFail($id);
 
-        return view('backEnd.admin.campus.show', compact('campus'));
+        return view('backEnd.admin.roles.show', compact('role'));
     }
 
     /**
@@ -86,9 +84,9 @@ class CampusController extends Controller
      */
     public function edit($id)
     {
-        $campus = Campus::findOrFail($id);
+        $role = Role::findOrFail($id);
 
-        return view('backEnd.admin.campus.edit', compact('campus'));
+        return view('backEnd.admin.roles.edit', compact('role'));
     }
 
     /**
@@ -101,18 +99,15 @@ class CampusController extends Controller
     public function update($id, Request $request)
     {
         try {
-            $this->validate($request, ['name' => 'required', 'address' => 'required', 'postal_code' => 'required',]);
+            $role = Role::findOrFail($id);
+            $role->update($request->all());
 
-            $campus = Campus::findOrFail($id);
-            $campus->update($request->all());
+            Alert::info('Rol actualizado exitosamente!');
 
-            Alert::message('Plantel actualizado exitosamente!')->persistent("Cerrar");
-
-            return redirect('admin/campus');
+            return redirect('roles');
         } catch (\Exception $e) {
             Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-
-            return redirect('admin/campus');
+            return redirect('roles');
         }
     }
 
@@ -126,17 +121,16 @@ class CampusController extends Controller
     public function destroy($id)
     {
         try {
-            $campus = Campus::findOrFail($id);
+            $role = Role::findOrFail($id);
 
-            $campus->delete();
+            $role->delete();
 
-            Alert::message('Plantel eliminado exitosamente!')->persistent("Cerrar");
+            Alert::success('Rol eliminado exitosamente!');
 
-            return redirect('admin/campus');
+            return redirect('roles');
         } catch (\Exception $e) {
             Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-
-            return redirect('admin/campus');
+            return redirect('roles');
         }
     }
 }

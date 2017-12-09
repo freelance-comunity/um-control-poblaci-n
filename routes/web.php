@@ -28,3 +28,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('users', 'UsersController');
   Route::get('changePassword', 'UsersController@changePassword');
 });
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('roles', 'RolesController');
+});

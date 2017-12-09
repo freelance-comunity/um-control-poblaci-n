@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use App\Campus;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -15,6 +16,11 @@ use Hash;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('is_admin');
+    }
 
     /**
      * Display a listing of the resource.
@@ -36,8 +42,10 @@ class UsersController extends Controller
     public function create()
     {
         $campus = Campus::pluck('name', 'id');
+        $roles  = Role::pluck('name', 'id');
         return view('backEnd.admin.users.create')
-        ->with('campus', $campus);
+        ->with('campus', $campus)
+        ->with('roles', $roles);
     }
 
     /**
@@ -48,7 +56,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try {
-            User::create($request->all());
+            $password = Hash::make($request->input('password'));
+            $input = $request->all();
+            $input['password'] = $password;
+
+            $role = Role::findOrFail($request->input('role'));
+            $user = User::create($input);
+            $user->assignRole($role->name);
 
             Alert::success('Usuario creado exitosamente!')->persistent("Cerrar");
 
@@ -135,19 +149,18 @@ class UsersController extends Controller
 
     public function changePassword(Request $request)
     {
-      try {
-        $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
+        try {
+            $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
 
-        $user = User::findOrFail($request->input('user'));
-        $user->password = Hash::make($request->password);
-        $user->save();
+            $user = User::findOrFail($request->input('user'));
+            $user->password = Hash::make($request->password);
+            $user->save();
 
-        Alert::success('Contraseña actualizada exitosamente!')->persistent("Cerrar");
-        return redirect('users');
-      } catch (\Exception $e) {
-        Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-        return redirect('users');
-      }
-
+            Alert::success('Contraseña actualizada exitosamente!')->persistent("Cerrar");
+            return redirect('users');
+        } catch (\Exception $e) {
+            Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
+            return redirect('users');
+        }
     }
 }
