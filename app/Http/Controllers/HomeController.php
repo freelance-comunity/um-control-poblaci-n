@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Population;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $population = Population::all();
+        $actives = Population::where('status', 'A');
+        $lows = Population::where('status', 'B');
+        $titles = Population::where('title', 'SI');
+        return view('home')
+        ->with('population', $population)
+        ->with('actives', $actives)
+        ->with('lows', $lows)
+        ->with('titles', $titles);
     }
 
     public function chart()

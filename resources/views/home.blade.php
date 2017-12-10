@@ -1,8 +1,9 @@
 @extends('layouts.master-app')
 
 @section('content')
+  @include('partials.main-content')
 <!--Población por carreras -->
-<div class="col-lg-6 col-sm-6 col-xs-12">
+{{-- <div class="col-lg-6 col-sm-6 col-xs-12">
   <div class="pmd-card pmd-z-depth todos">
     <div class="pmd-card-title">
       <div class="media-left">
@@ -32,6 +33,6 @@
 
     <span class="btn-loader loader hidden">Cargando...</span>
   </div>
-</div>
+</div> --}}
 <!--end población por carreras-->
 @endsection

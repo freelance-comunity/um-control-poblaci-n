@@ -25,16 +25,17 @@
           <div class="form-group pmd-textfield pmd-textfield-floating-label">
             <label for="first-name">Cargar Excel</label>
              <input type="file" name="excel" onchange="checkfile(this);" class="form-control">
-            <span class="help-text">El archivo tiene que ser extensión .xls</span> </div>
-          <div class="form-group">
+            <span class="help-text">El archivo tiene que tener extensión .xls</span> </div>
+          {{-- <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">
               {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
             </div>
-          </div>
-        </form>
+          </div> --}}
       </div>
       <div class="pmd-modal-action">
         {{-- <button data-dismiss="modal" class="btn pmd-ripple-effect btn-primary" type="button">Guardar Cambios</button> --}}
+        {!! Form::submit('SUBIR', ['class' => 'btn pmd-ripple-effect btn-primary']) !!}
+        </form>
         <button data-dismiss="modal" class="btn pmd-ripple-effect btn-danger" type="button">Cancelar</button>
       </div>
     </div>

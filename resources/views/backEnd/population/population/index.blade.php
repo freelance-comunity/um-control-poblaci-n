@@ -1,6 +1,6 @@
 @extends('backLayout.app') @section('title') Población Estudiantil @stop @section('content')
 
-<h1>Población Estudiantil <div class="btn-group pull-right"  style="margin: 9px 0 5px;"><button data-target="#form-dialog" data-toggle="modal" class="btn btn-lg pmd-btn-raised pmd-ripple-effect btn-warning pull-right" type="button">Cargar Excel</button> <a href="{{ url('population/population/create') }}" class="btn btn-lg pmd-btn-raised pmd-ripple-effect btn-primary pull-right">Agregar Nuevo Registro</a></div></h1>
+<h1>Población Estudiantil <div class="btn-group pull-right"  style="margin: 9px 0 5px;"><button data-target="#form-dialog" data-toggle="modal" class="btn btn-lg pmd-btn-raised pmd-ripple-effect btn-primary pull-right" type="button">Cargar Excel</button> <!--<a href="{{ url('population/population/create') }}" class="btn btn-lg pmd-btn-raised pmd-ripple-effect btn-primary pull-right">Agregar Nuevo Registro</a>--></div></h1>
 <hr> @include('partials.modal-excel') @if ($errors->any())
 <ul class="alert alert-danger">
   @foreach ($errors->all() as $error)
@@ -46,7 +46,7 @@
         <td>{{ $item->date}}</td>
         <td>{{ $item->status}}</td>
         <td>{{ $item->enrollment}}</td>
-        <td><a href="{{ url('population/population', $item->id) }}">{{ $item->name }}</a></td>
+        <td><!--<a href="{{ url('population/population', $item->id) }}">-->{{ $item->name }}<!--</a>--></td>
         <td>{{ $item->system }}</td>
         <td>{{ $item->turn }}</td>
         <td>{{ $item->semi_day }}</td>

@@ -14,20 +14,20 @@ class CreatePopulationsTable extends Migration
     {
         Schema::create('populations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('month');
+            $table->string('month')->nullable();
             $table->date('date')->nullable();;
-            $table->string('status');
-            $table->string('enrollment');
-            $table->string('name');
-            $table->string('system');
-            $table->string('turn');
+            $table->string('status')->nullable();
+            $table->string('enrollment')->nullable();
+            $table->string('name')->nullable();
+            $table->string('system')->nullable();
+            $table->string('turn')->nullable();
             $table->string('semi_day')->nullable();
             $table->string('scholarship')->nullable();
             $table->string('foreign')->nullable();
             $table->string('agreement')->nullable();
             $table->string('average')->nullable();
             $table->string('five_or_more')->nullable();
-            $table->string('quarter');
+            $table->string('quarter')->nullable();
             $table->string('year_income')->nullable();;
             $table->string('year_discharge')->nullable();
             $table->text('observations_of_changes')->nullable();;
@@ -40,7 +40,6 @@ class CreatePopulationsTable extends Migration
             $table->string('title')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

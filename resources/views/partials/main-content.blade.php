@@ -35,7 +35,7 @@
           </g>
         </svg>
           </div>
-          <div class="pmd-display2">1100</div>
+          <div class="pmd-display2">{{$actives->count()}}</div>
           <div class="source-semibold typo-fill-secondary">Alumnos activos</div>
         </li>
         <li>
@@ -53,7 +53,7 @@
           </g>
         </svg>
           </div>
-          <div class="pmd-display2">30</div>
+          <div class="pmd-display2">{{$lows->count()}}</div>
           <div class="source-semibold typo-fill-secondary">Alumnos inactivos</div>
         </li>
         <li>
@@ -71,8 +71,8 @@
               c0-1.737,1.251-3.542,3.662-4.973C290.308,1303.737,293.778,1302.789,297.64,1302.789z"/>
           </g>
         </svg>
-          </div>
-          <div class="pmd-display2">570</div>
+      </div>
+          <div class="pmd-display2">{{$titles->count()}}</div>
           <div class="source-semibold typo-fill-secondary">Graduados</div>
         </li>
       </ul>

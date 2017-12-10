@@ -23,7 +23,7 @@ class Population extends Model
     protected $fillable = ['month', 'date', 'status', 'enrollment', 'name', 'system', 'turn', 'semi_day', 'scholarship', 'foreign', 'agreement', 'average
 ', 'five_or_more', 'quarter', 'year_income', 'year_discharge', 'observations_of_changes', 'modification_date', 'low', 'low_date', 'observations_low', 'intern_letter', 'certificate', 'title'];
 
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
+    // use SoftDeletes;
+    // protected $dates = ['deleted_at'];
 
 }
