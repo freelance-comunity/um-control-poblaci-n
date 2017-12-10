@@ -34,6 +34,7 @@ c0,0,0.616-0.945,0.616-1.001c0.168-0.281,0.334-0.626,0.334-1.02C7.875,0.733,7.14
 </a>
   <ul class="dropdown-menu">
     <li><a href="{{url('admin/campus')}}">Planteles</a></li>
+    <li><a href="{{url('population/population')}}">Población Estudiantil</a></li>
     <li><a href="{{url('users')}}">Usuarios</a></li>
     <li><a href="{{url('roles')}}">Roles</a></li>
   </ul>

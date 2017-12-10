@@ -1,25 +1,6 @@
 @extends('layouts.master-app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">UNIVERSIDAD MAYA</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    Bienvenido de nuevo {{Auth::user()->name}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--Población por carreras -->
 <div class="col-lg-6 col-sm-6 col-xs-12">
   <div class="pmd-card pmd-z-depth todos">

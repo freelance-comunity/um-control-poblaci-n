@@ -31,3 +31,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('roles', 'RolesController');
 });
+
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('population/population', 'Population\\PopulationController');
+  Route::get('importExcel', 'Population\\PopulationController@importExcel');
+  Route::post('/import-excel', 'Population\\PopulationController@importExcel');
+
+});

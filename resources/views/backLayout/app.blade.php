@@ -48,6 +48,7 @@
 
   {{-- Sweet alert --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
 </head>
 
 <body>
@@ -80,7 +81,7 @@
       <li class="dropdown pmd-dropdown pmd-user-info visible-xs visible-md visible-sm visible-lg">
         <a aria-expanded="false" data-toggle="dropdown" class="btn-user dropdown-toggle media" data-sidebar="true" aria-expandedhref="javascript:void(0);">
           <div class="media-left">
-            <img src="{{asset('themes/images/user-icon.png')}}" alt="New User">
+            <img src="{{asset('images/logo_um_blanco.png')}}" style="width:70px;" alt="New User">
           </div>
           <div class="media-body media-middle">Dashboard UM</div>
           <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
@@ -191,6 +192,6 @@
   {{-- Sweet alert --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   @include('sweet::alert')
-
+  @yield('scripts')
 </body>
 </html>

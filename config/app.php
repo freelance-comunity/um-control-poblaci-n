@@ -192,6 +192,9 @@ return [
         // Spatie roles
         Spatie\Permission\PermissionServiceProvider::class,
 
+        // Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -247,6 +250,9 @@ return [
 
         // Sweet alert
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+
+        // Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
     ],

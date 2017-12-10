@@ -13,7 +13,8 @@
         "laravelcollective/html": "^5.5",
         "roland/crud": "dev-master",
         "spatie/laravel-permission": "^2.7",
-        "uxweb/sweet-alert": "^1.4"
+        "uxweb/sweet-alert": "^1.4",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
