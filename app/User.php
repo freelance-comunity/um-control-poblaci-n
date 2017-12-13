@@ -30,6 +30,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /*Relación uno a uno con plantel, un usuario pertenece a un plantel*/
     public function campus()
     {
         return $this->belongsTo('App\Campus');

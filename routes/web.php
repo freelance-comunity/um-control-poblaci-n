@@ -38,3 +38,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('/import-excel', 'Population\\PopulationController@importExcel');
 
 });
+
+Route::get('test', function(){
+  return view('onload');
+});

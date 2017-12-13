@@ -8,6 +8,9 @@
   @endforeach
 </ul>
 @endif
+@if($population->isEmpty())
+<div class="well text-center">No hay ningun registro.</div>
+@else
 <div class="table table-responsive">
   <table class="table pmd-table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
     <thead>
@@ -36,7 +39,7 @@
         <th>Carta de pasante</th>
         <th>Certificado de licenciatura</th>
         <th>Titulo</th>
-        <th>Detalle</th>
+        {{-- <th>Detalle</th> --}}
       </tr>
     </thead>
     <tbody>
@@ -46,7 +49,10 @@
         <td>{{ $item->date}}</td>
         <td>{{ $item->status}}</td>
         <td>{{ $item->enrollment}}</td>
-        <td><!--<a href="{{ url('population/population', $item->id) }}">-->{{ $item->name }}<!--</a>--></td>
+        <td>
+          <!--<a href="{{ url('population/population', $item->id) }}">-->{{ $item->name }}
+          <!--</a>-->
+        </td>
         <td>{{ $item->system }}</td>
         <td>{{ $item->turn }}</td>
         <td>{{ $item->semi_day }}</td>
@@ -66,10 +72,10 @@
         <td>{{ $item->intern_letter }}</td>
         <td>{{ $item->certificate }}</td>
         <td>{{ $item->title }}</td>
-        <td>
+        {{-- <td>
           <a href="{{ url('population/population/' . $item->id . '/edit') }}" class="btn pmd-ripple-effect btn-primary">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['population/population', $item->id], 'style' => 'display:inline' ]) !!}
           {!! Form::submit('Eliminar', ['class' => 'btn pmd-ripple-effect btn-danger']) !!} {!! Form::close() !!}
-        </td>
+        </td> --}}
       </tr>
       @endforeach
     </tbody>
@@ -78,4 +84,5 @@
     {{ $population->links() }}
   </div>
 </div>
+@endif
 @endsection

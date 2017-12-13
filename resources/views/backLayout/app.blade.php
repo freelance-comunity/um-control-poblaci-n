@@ -8,7 +8,7 @@
   <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Dashboard | UM</title>
+  <title>SICAP | UM</title>
   <meta name="description" content="Admin is a material design and bootstrap based responsive dashboard template created mainly for admin and backend applications." />
 
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo_2.png')}}">
@@ -61,7 +61,7 @@
       <div class="navbar-header">
         <a href="javascript:void(0);" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect pull-left margin-r8 pmd-sidebar-toggle"><i class="material-icons">menu</i></a>
         <a href="{{url('home')}}" class="navbar-brand">
-        UNIVERSIDAD MAYA
+        SICAP | UM
 		  </a>
       </div>
     </div>
@@ -83,7 +83,7 @@
           <div class="media-left">
             <img src="{{asset('images/logo_um_blanco.png')}}" style="width:70px;" alt="New User">
           </div>
-          <div class="media-body media-middle">Dashboard UM</div>
+          {{-- <div class="media-body media-middle">Dashboard UM</div> --}}
           <div class="media-right media-middle"><i class="dic-more-vert dic"></i></div>
         </a>
         <ul class="dropdown-menu">
