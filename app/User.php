@@ -35,4 +35,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Campus');
     }
+
+    public static function suma($n1, $n2)
+    {
+      return $n1 + $n2;
+    }
 }

@@ -58,3 +58,8 @@ Route::get('test', function () {
   Route::get('vista', function(){
     return view('pdf');
   });
+
+  Route::get('saludo', function(){
+    $suma = App\User::suma(6,9);
+    echo $suma;
+  });
