@@ -195,6 +195,13 @@ return [
         // Excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        // Google ChartjsServiceProvider
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
+        // Dompdf
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+
     ],
 
     /*
@@ -253,6 +260,12 @@ return [
 
         // Excel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+        // Google charts
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+
+        //DomPDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
     ],
