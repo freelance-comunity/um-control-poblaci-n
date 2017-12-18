@@ -65,7 +65,7 @@ class ReferenceController extends Controller
         echo "<h1>".$importe_condensado."</h1>";
     }
 
-    public function generateBanorte(Request $request)
+    public function generateReference(Request $request)
     {
         $reference = $request->input('reference');
         $date_limit = $request->input('date_limit');
@@ -133,14 +133,14 @@ class ReferenceController extends Controller
             }
         }
         $digito_verificador = ($resultado%97)+1;
-        // if (strlen($digito_verificador)==1) {
-        //     $digito_verificador = '0'.$digito_verificador;
-        // }
+        if (strlen($digito_verificador)==1) {
+            $digito_verificador = '0'.$digito_verificador;
+        }
         // echo "<strong>Número de referencia: </strong>";
         // echo "<br>";
         $referencia = $referencia_integrada.$digito_verificador;
-        // echo "<h1>Banorte: ".$referencia."</h1>";
-        // echo "<br>";
+        echo "<h1>Banorte: ".$referencia."</h1>";
+        echo "<br>";
         /*
         *
         * generateSantander
@@ -205,16 +205,16 @@ class ReferenceController extends Controller
             }
         }
         $digito_verificador_s = ($resultado_s_d%97)+1;
+        if (strlen($digito_verificador_s)==1) {
+            $digito_verificador_s = '0'.$digito_verificador_s;
+        }
         $referencia_s = $referencia_integrada_s.$digito_verificador_s;
-        // echo "<h1>Santander: ".$referencia_s."</h1>";
+        echo "<h1>Santander: ".$referencia_s."</h1>";
 
-        $print[1] = $referencia;
-        $print[2] = $referencia_s;
-        $print[3] = $date_limit;
-        $print[4] = $amount;
-
-        $pdf = \PDF::loadView('pdf', compact('print'));
-        return $pdf->download('referencia.pdf');
+        // $print[1] = $referencia;
+        // $print[2] = $referencia_s;
+        // $print[3] = $date_limit;
+        // $print[4] = $amount;
 
     }
 }

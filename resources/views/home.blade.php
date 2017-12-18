@@ -1,38 +1,61 @@
-@extends('layouts.master-app')
-
+@extends('layouts.ui')
 @section('content')
-  @include('partials.main-content')
-<!--Población por carreras -->
-{{-- <div class="col-lg-6 col-sm-6 col-xs-12">
-  <div class="pmd-card pmd-z-depth todos">
-    <div class="pmd-card-title">
-      <div class="media-left">
-        <span class="service-icon img-circle bg-fill-feedback">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="31.999px" height="30.769px" viewBox="281.642 394.113 31.999 30.769" enable-background="new 281.642 394.113 31.999 30.769" xml:space="preserve">
-        <g>
-          <path fill="#FFFFFF" d="M290.526,394.574l-4.218,5.273l-2.753-1.835c-0.567-0.379-1.331-0.224-1.707,0.341
-          s-0.224,1.331,0.341,1.707l3.692,2.461c0.209,0.139,0.447,0.207,0.683,0.207c0.362,0,0.72-0.16,0.961-0.462l4.923-6.154
-          c0.425-0.53,0.338-1.306-0.192-1.729C291.726,393.958,290.951,394.044,290.526,394.574z"/>
-          <path fill="#FFFFFF" d="M290.526,405.651l-4.218,5.272l-2.753-1.835c-0.566-0.379-1.331-0.225-1.707,0.341
-          c-0.376,0.565-0.224,1.33,0.341,1.707l3.692,2.462c0.209,0.139,0.447,0.207,0.683,0.207c0.362,0,0.72-0.16,0.961-0.461l4.923-6.154
-          c0.425-0.531,0.338-1.306-0.192-1.729C291.726,405.036,290.951,405.12,290.526,405.651z"/>
-          <path fill="#FFFFFF" d="M290.526,416.729l-4.218,5.272l-2.753-1.835c-0.566-0.378-1.331-0.224-1.707,0.341
-          c-0.376,0.566-0.224,1.329,0.341,1.707l3.692,2.462c0.209,0.139,0.447,0.206,0.683,0.206c0.362,0,0.72-0.159,0.961-0.461
-          l4.923-6.154c0.425-0.531,0.338-1.306-0.192-1.73C291.726,416.113,290.951,416.198,290.526,416.729z"/>
-          <rect x="296.41" y="419.959" fill="#FFFFFF" width="17.23" height="2.462"/>
-          <rect x="296.41" y="408.882" fill="#FFFFFF" width="17.23" height="2.461"/>
-          <rect x="296.41" y="397.805" fill="#FFFFFF" width="17.23" height="2.461"/>
-        </g>
-      </svg>
-    </span>
-      </div>
-      <div class="media-body media-middle">
-        <h2 class="pmd-card-title-text typo-fill-secondary">Población por carreras</h2>
+<div class="uk-container uk-container-large">
+  <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-4@xl">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <span class="statistics-text">Alumnos Activos</span><br />
+        <span class="statistics-number">
+                                  {{$actives->count()}}
+                                <span class="uk-label uk-label-success">
+                                      <span class="ion-arrow-up-c"></span>
+        </span>
+        </span>
       </div>
     </div>
-
-    <span class="btn-loader loader hidden">Cargando...</span>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <span class="statistics-text">Alumnos con baja</span><br />
+        <span class="statistics-number">
+                                  {{$lows->count()}}
+                                  <span class="uk-label uk-label-danger">
+                                      <span class="ion-arrow-down-c"></span>
+        </span>
+        </span>
+      </div>
+    </div>
   </div>
-</div> --}}
-<!--end población por carreras-->
-@endsection
+  <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@l">
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+          Población por estatus
+        </div>
+        <div class="uk-card-body">
+          {!! $chart2->html() !!}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+          Población por modalidad
+        </div>
+        <div class="uk-card-body">
+          {!! $chart3->html() !!}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+          Población por licenciaturas
+        </div>
+        <div class="uk-card-body">
+          {!! $chart4->html() !!}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{!! Charts::scripts() !!} {!! $chart2->script() !!} {!! $chart3->script() !!} {!! $chart4->script() !!} @endsection

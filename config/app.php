@@ -201,6 +201,9 @@ return [
         // Dompdf
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        // Image intervention
+        Intervention\Image\ImageServiceProvider::class,
+
 
     ],
 
@@ -266,6 +269,9 @@ return [
 
         //DomPDF
         'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        // Image Intervention
+        'Image' => Intervention\Image\Facades\Image::class,
 
 
     ],

@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use Session;
 use Alert;
 use Hash;
+use Image;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -68,6 +70,16 @@ class UsersController extends Controller
             $role = Role::findOrFail($request->input('role'));
             $user = User::create($input);
             $user->assignRole($role->name);
+
+            // Handle the user upload of avatar
+            if ($request->hasFile('avatar')) {
+                $avatar = $request->file('avatar');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+                $user->avatar = $filename;
+                $user->save();
+            }
 
             Alert::success('Usuario creado exitosamente!')->persistent("Cerrar");
 
@@ -154,18 +166,29 @@ class UsersController extends Controller
 
     public function changePassword(Request $request)
     {
-        try {
-            $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
+        $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
 
-            $user = User::findOrFail($request->input('user'));
-            $user->password = Hash::make($request->password);
+        $user = User::findOrFail($request->input('user'));
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        Alert::success('Contraseña actualizada exitosamente!')->persistent("Cerrar");
+        return redirect('users');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        // Handle the user upload of avatar
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+            $user = Auth::user();
+            $user->avatar = $filename;
             $user->save();
-
-            Alert::success('Contraseña actualizada exitosamente!')->persistent("Cerrar");
-            return redirect('users');
-        } catch (\Exception $e) {
-            Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-            return redirect('users');
         }
+
+        return view('backEnd.admin.users.profile');
     }
 }

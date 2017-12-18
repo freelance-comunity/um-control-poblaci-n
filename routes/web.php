@@ -27,6 +27,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web']], function () {
     Route::resource('users', 'UsersController');
     Route::get('changePassword', 'UsersController@changePassword');
+    Route::get('profile', function(){
+      return view('backEnd.admin.users.profile');
+    });
+    Route::post('profile', 'UsersController@updateProfile');
 });
 Route::group(['middleware' => ['web']], function () {
     Route::resource('roles', 'RolesController');
@@ -48,7 +52,7 @@ Route::get('test', function () {
       return view('referenciado');
   });
 
-  Route::get('generar', 'ReferenceController@generateBanorte');
+  Route::get('generar', 'ReferenceController@generateReference');
 
   Route::get('pdf', function () {
     $pdf = PDF::loadView('pdf');
@@ -59,7 +63,6 @@ Route::get('test', function () {
     return view('pdf');
   });
 
-  Route::get('saludo', function(){
-    $suma = App\User::suma(6,9);
-    echo $suma;
+  Route::get('testui', function(){
+    return view('ui');
   });

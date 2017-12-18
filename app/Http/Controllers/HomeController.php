@@ -26,39 +26,89 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $population = Population::all();
-        $actives = Population::where('status', 'A');
-        $lows = Population::where('status', 'B');
-        $titles = Population::where('title', 'SI');
-        return view('home')
-        ->with('population', $population)
-        ->with('actives', $actives)
-        ->with('lows', $lows)
-        ->with('titles', $titles);
+      $a = Population::where('status', 'A');
+      $b = Population::where('status', 'B');
+      $esco = Population::where('system', 'ESCOLARIZADO');
+      $semi = Population::where('system', 'SEMIESCOLARIZADO');
+
+      $actives = Population::where('status', 'A');
+      $lows = Population::where('status', 'B');
+
+      $chart2 = Charts::create('pie', 'highcharts')
+      ->title('ESTATUS')
+      ->labels(['ACTIVOS', 'BAJAS'])
+      ->values([$a->count(),$b->count()])
+      ->dimensions(800, 400)
+      ->responsive(true);
+
+      $chart3 = Charts::create('bar', 'highcharts')
+      ->title('MODALIDAD')
+      ->labels(['ESCOLARIZADO', 'SEMIESCOLARIZADO'])
+      ->elementLabel('TOTAL')
+      ->values([$esco->count(),$semi->count()])
+      ->dimensions(1000, 600)
+      ->responsive(true);
+
+      $chart4 = Charts::create('pie', 'highcharts')
+      ->title('My nice chart')
+      ->labels(['First', 'Second', 'Third'])
+      ->values([5,10,20])
+      ->dimensions(800, 400)
+      ->responsive(true);
+
+      return view('chart')
+      ->with('actives', $actives)
+      ->with('lows', $lows)
+      ->with('chart2', $chart2)
+      ->with('chart3', $chart3)
+      ->with('chart4', $chart4);
     }
 
     public function chart()
     {
-        $chart = Charts::database(User::all(), 'bar', 'google')
-        ->elementLabel("Total")
-        ->GroupByYear();
-        return view('chart', compact('chart'));
+        $a = Population::where('status', 'A');
+        $b = Population::where('status', 'B');
+        $esco = Population::where('system', 'ESCOLARIZADO');
+        $semi = Population::where('system', 'SEMIESCOLARIZADO');
+
+        $actives = Population::where('status', 'A');
+        $lows = Population::where('status', 'B');
+
+        $chart2 = Charts::create('pie', 'highcharts')
+        ->title('ESTATUS')
+        ->labels(['ACTIVOS', 'BAJAS'])
+        ->values([$a->count(),$b->count()])
+        ->dimensions(800, 400)
+        ->responsive(true);
+
+        $chart3 = Charts::create('bar', 'highcharts')
+        ->title('MODALIDAD')
+        ->labels(['ESCOLARIZADO', 'SEMIESCOLARIZADO'])
+        ->elementLabel('TOTAL')
+        ->values([$esco->count(),$semi->count()])
+        ->dimensions(1000, 600)
+        ->responsive(true);
+
+        $chart4 = Charts::create('pie', 'highcharts')
+        ->title('My nice chart')
+        ->labels(['First', 'Second', 'Third'])
+        ->values([5,10,20])
+        ->dimensions(800, 400)
+        ->responsive(true);
+
+        return view('chart')
+        ->with('actives', $actives)
+        ->with('lows', $lows)
+        ->with('chart2', $chart2)
+        ->with('chart3', $chart3)
+        ->with('chart4', $chart4);
     }
 
     /**
-    *  Generar Referencia Bancaria para referenciado
-    *  deacuerdo a la matricula de alumno de la
+    *  Generar fecha limite condensada
     *
-    *  @param   Int
-    *  @param   String
-    *  @param   Int
-    *  @param   Float
-    *  @param   String
-    *
-    *  @return  String
     *
     */
-
     public function reference()
     {
         $monto = 2550;
