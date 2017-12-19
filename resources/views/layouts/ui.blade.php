@@ -31,7 +31,7 @@
         <div class="uk-navbar-left">
           <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon></a>
           <a href="{{url('/home')}}" class="uk-navbar-item uk-logo">
-                            CICAP Admin
+                            CICAP | UM
                         </a>
         </div>
         <div class="uk-navbar-right uk-light">

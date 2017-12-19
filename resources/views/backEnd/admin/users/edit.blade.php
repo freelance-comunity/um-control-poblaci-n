@@ -12,7 +12,9 @@
           {!! Form::model($user, [ 'method' => 'PATCH', 'url' => ['users', $user->id]]) !!}
           <div class="uk-margin">
             <div class="uk-position-relative">
-              <label class="uk-form-label" for="form-stacked-select">Nombre</label>
+              <img src="{{asset('uploads/avatars')}}/{{$user->avatar}}" style="width:100px; height:100px; border-radius:50%">
+              <br>
+              {{-- <label class="uk-form-label" for="form-stacked-select">Nombre</label> --}}
               <p class="form-control-static"><strong>{{$user->name}}</strong></p>
             </div>
           </div>
