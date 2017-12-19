@@ -26,7 +26,7 @@ class CampusController extends Controller
      */
     public function index()
     {
-        $campus = Campus::paginate(5);
+        $campus = Campus::all();
 
         return view('backEnd.admin.campus.index', compact('campus'));
     }

@@ -30,7 +30,7 @@ class PopulationController extends Controller
      */
     public function index()
     {
-        $population = Population::paginate(5);
+        $population = Population::all();
 
         return view('backEnd.population.population.index', compact('population'));
     }

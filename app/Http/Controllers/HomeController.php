@@ -26,36 +26,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $a = Population::where('status', 'A');
-      $b = Population::where('status', 'B');
-      $esco = Population::where('system', 'ESCOLARIZADO');
-      $semi = Population::where('system', 'SEMIESCOLARIZADO');
+        $a = Population::where('status', 'A');
+        $b = Population::where('status', 'B');
+        $esco = Population::where('system', 'ESCOLARIZADO');
+        $semi = Population::where('system', 'SEMIESCOLARIZADO');
 
-      $actives = Population::where('status', 'A');
-      $lows = Population::where('status', 'B');
+        // Consultas activos y bajas
+        $actives = Population::where('status', 'A');
+        $lows = Population::where('status', 'B');
 
-      // Consultas por plantel
-      $tuxtla = Population::where('campus', 'TUXTLA GUTIERREZ');
-      $cancun = Population::where('campus', 'CANCUN');
-      $tapachula = Population::where('campus', 'TAPACHULA');
+        // Consultas por plantel
+        $tuxtla = Population::where('campus', 'TUXTLA GUTIERREZ');
+        $cancun = Population::where('campus', 'CANCUN');
+        $tapachula = Population::where('campus', 'TAPACHULA');
 
-      // Consultas por carrera
-      $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS');
-      $conta = Population::where('career', 'CONTADURIA PUBLICA');
-      $derecho = Population::where('career', 'DERECHO');
-      $mecanica = Population::where('career', 'MECANICA AUTOMOTRIZ');
-      $tsocial = Population::where('career', 'TRABAJO SOCIAL');
-      $enfermeria = Population::where('career', 'ENFERMERIA');
-      $civil = Population::where('career', 'INGENIERIA CIVIL');
+        // Consultas por carrera
+        $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS');
+        $conta = Population::where('career', 'CONTADURIA PUBLICA');
+        $derecho = Population::where('career', 'DERECHO');
+        $mecanica = Population::where('career', 'MECANICA AUTOMOTRIZ');
+        $tsocial = Population::where('career', 'TRABAJO SOCIAL');
+        $enfermeria = Population::where('career', 'ENFERMERIA');
+        $civil = Population::where('career', 'INGENIERIA CIVIL');
 
-      $chart2 = Charts::create('pie', 'highcharts')
+        $chart2 = Charts::create('pie', 'highcharts')
       ->title('ESTATUS')
       ->labels(['ACTIVOS', 'BAJAS'])
       ->values([$a->count(),$b->count()])
       ->dimensions(800, 400)
       ->responsive(true);
 
-      $chart3 = Charts::create('bar', 'highcharts')
+        $chart3 = Charts::create('bar', 'highcharts')
       ->title('MODALIDAD')
       ->labels(['ESCOLARIZADO', 'SEMIESCOLARIZADO'])
       ->elementLabel('TOTAL')
@@ -63,22 +64,23 @@ class HomeController extends Controller
       ->dimensions(1000, 600)
       ->responsive(true);
 
-      $chart4 = Charts::create('donut', 'highcharts')
+        $chart4 = Charts::create('donut', 'highcharts')
       ->title('PLANTELES')
       ->labels(['TUXTLA GUTIERREZ', 'CANCUN', 'TAPACHULA'])
       ->values([$tuxtla->count(),$cancun->count(),$tapachula->count()])
       ->dimensions(800, 400)
       ->responsive(true);
 
-      $chart5 = Charts::create('line', 'highcharts')
+        $chart5 = Charts::create('area', 'highcharts')
       ->title('CARRERAS')
       ->labels(['ADMINISTRACION DE EMPRESAS', 'CONTADURIA PUBLICA', 'DERECHO', 'MECANICA AUTOMOTRIZ', 'TRABAJO SOCIAL', 'ENFERMERIA', 'INGENIERIA CIVIL'])
       ->elementLabel('TOTAL')
+       ->template("material")
       ->values([$admon->count(),$conta->count(), $derecho->count(), $mecanica->count(), $tsocial->count(), $enfermeria->count(), $civil->count()])
       ->dimensions(1000, 600)
       ->responsive(true);
 
-      return view('chart')
+        return view('chart')
       ->with('actives', $actives)
       ->with('lows', $lows)
       ->with('chart2', $chart2)
