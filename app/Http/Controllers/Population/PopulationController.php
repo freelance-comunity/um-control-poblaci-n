@@ -148,7 +148,9 @@ class PopulationController extends Controller
                             $archive->month = $row->mes;
                             $archive->date = $row->fecha;
                             $archive->status = $row->status;
+                            $archive->campus = $row->plantel;
                             $archive->enrollment = $row->matricula;
+                            $archive->career = $row->carrera;
                             $archive->name = $row->nombre;
                             $archive->system = $row->sistema;
                             $archive->turn = $row->turno;
@@ -177,7 +179,9 @@ class PopulationController extends Controller
                         'month' => $row->mes,
                         'date'  => $row->fecha,
                         'status'=> $row->status,
+                        'campus' =>$row->plantel,
                         'enrollment' => $row->matricula,
+                        'career' => $row->carrera,
                         'name' => $row->nombre,
                         'system' => $row->sistema,
                         'turn' => $row->turno,

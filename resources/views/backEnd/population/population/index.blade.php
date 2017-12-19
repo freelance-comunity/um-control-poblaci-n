@@ -18,7 +18,9 @@
         <th>Mes</th>
         <th>Fecha</th>
         <th>Estatus</th>
+        <th>Plantel</th>
         <th>Matricula</th>
+        <th>Carrera</th>
         <th>Nombre</th>
         <th>Sistema</th>
         <th>Turno</th>
@@ -48,7 +50,9 @@
         <td>{{ $item->month}}</td>
         <td>{{ $item->date}}</td>
         <td>{{ $item->status}}</td>
+        <td>{{ $item->campus }}</td>
         <td>{{ $item->enrollment}}</td>
+        <td>{{ $item->career }}</td>
         <td>
           <!--<a href="{{ url('population/population', $item->id) }}">-->{{ $item->name }}
           <!--</a>-->

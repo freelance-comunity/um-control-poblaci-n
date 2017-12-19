@@ -34,6 +34,20 @@ class HomeController extends Controller
       $actives = Population::where('status', 'A');
       $lows = Population::where('status', 'B');
 
+      // Consultas por plantel
+      $tuxtla = Population::where('campus', 'TUXTLA GUTIERREZ');
+      $cancun = Population::where('campus', 'CANCUN');
+      $tapachula = Population::where('campus', 'TAPACHULA');
+
+      // Consultas por carrera
+      $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS');
+      $conta = Population::where('career', 'CONTADURIA PUBLICA');
+      $derecho = Population::where('career', 'DERECHO');
+      $mecanica = Population::where('career', 'MECANICA AUTOMOTRIZ');
+      $tsocial = Population::where('career', 'TRABAJO SOCIAL');
+      $enfermeria = Population::where('career', 'ENFERMERIA');
+      $civil = Population::where('career', 'INGENIERIA CIVIL');
+
       $chart2 = Charts::create('pie', 'highcharts')
       ->title('ESTATUS')
       ->labels(['ACTIVOS', 'BAJAS'])
@@ -49,11 +63,19 @@ class HomeController extends Controller
       ->dimensions(1000, 600)
       ->responsive(true);
 
-      $chart4 = Charts::create('pie', 'highcharts')
-      ->title('My nice chart')
-      ->labels(['First', 'Second', 'Third'])
-      ->values([5,10,20])
+      $chart4 = Charts::create('donut', 'highcharts')
+      ->title('PLANTELES')
+      ->labels(['TUXTLA GUTIERREZ', 'CANCUN', 'TAPACHULA'])
+      ->values([$tuxtla->count(),$cancun->count(),$tapachula->count()])
       ->dimensions(800, 400)
+      ->responsive(true);
+
+      $chart5 = Charts::create('line', 'highcharts')
+      ->title('CARRERAS')
+      ->labels(['ADMINISTRACION DE EMPRESAS', 'CONTADURIA PUBLICA', 'DERECHO', 'MECANICA AUTOMOTRIZ', 'TRABAJO SOCIAL', 'ENFERMERIA', 'INGENIERIA CIVIL'])
+      ->elementLabel('TOTAL')
+      ->values([$admon->count(),$conta->count(), $derecho->count(), $mecanica->count(), $tsocial->count(), $enfermeria->count(), $civil->count()])
+      ->dimensions(1000, 600)
       ->responsive(true);
 
       return view('chart')
@@ -61,7 +83,8 @@ class HomeController extends Controller
       ->with('lows', $lows)
       ->with('chart2', $chart2)
       ->with('chart3', $chart3)
-      ->with('chart4', $chart4);
+      ->with('chart4', $chart4)
+      ->with('chart5', $chart5);
     }
 
     public function chart()
