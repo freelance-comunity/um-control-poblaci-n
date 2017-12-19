@@ -17,7 +17,9 @@ class CreatePopulationsTable extends Migration
             $table->string('month')->nullable();
             $table->date('date')->nullable();;
             $table->string('status')->nullable();
+            $table->string('campus')->nullable();
             $table->string('enrollment')->nullable();
+            $table->string('career')->nullable();
             $table->string('name')->nullable();
             $table->string('system')->nullable();
             $table->string('turn')->nullable();

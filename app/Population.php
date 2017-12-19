@@ -19,7 +19,7 @@ class Population extends Model
      *
      * @var array
      */
-    protected $fillable = ['month', 'date', 'status', 'enrollment', 'name', 'system', 'turn', 'semi_day', 'scholarship', 'foreign', 'agreement', 'average
+    protected $fillable = ['month', 'date', 'status', 'campus', 'enrollment', 'career', 'name', 'system', 'turn', 'semi_day', 'scholarship', 'foreign', 'agreement', 'average
 ', 'five_or_more', 'quarter', 'year_income', 'year_discharge', 'observations_of_changes', 'modification_date', 'low', 'low_date', 'observations_low', 'intern_letter', 'certificate', 'title'];
 
     // use SoftDeletes;
