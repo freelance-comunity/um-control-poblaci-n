@@ -4,7 +4,7 @@
     <div>
       <div class="uk-card uk-card-default">
         <div class="uk-card-header">
-          <h1 class="uk-heading-primary">Roles <a href="{{ url('roles/create') }}" class="uk-button uk-button-primary uk-button-large">Agregar Nuevo Rol</a></h1>
+          <h1 class="uk-heading-primary">Roles <a style="float:right;" href="{{ url('roles/create') }}" class="uk-button uk-button-primary uk-button-large">Agregar Nuevo Rol</a></h1>
         </div>
         <div class="uk-card-body">
           <div class="uk-overflow-auto">
