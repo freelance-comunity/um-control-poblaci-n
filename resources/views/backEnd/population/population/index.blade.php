@@ -4,8 +4,8 @@
     <div>
       <div class="uk-card uk-card-default">
         <div class="uk-card-header">
-          <h1 class="uk-heading-primary">Población Estudiantil <button style="float:right;" data-target="#form-dialog" data-toggle="modal" class="uk-button uk-button-primary uk-button-large" type="button">Cargar Excel</button> <!--<a href="{{ url('population/population/create') }}" class="btn btn-lg pmd-btn-raised pmd-ripple-effect btn-primary pull-right">Agregar Nuevo Registro</a>--></h1>
-          @include('partials.modal-excel')
+          <h1 class="uk-heading-primary">Población Estudiantil <a class="uk-button uk-button-primary uk-button-large" href="#excel" uk-toggle>Cargar Excel</a></h1>
+          @include('backEnd.population.population.excel')
         </div>
         <div class="uk-card-body">
           <div class="uk-overflow-auto">
