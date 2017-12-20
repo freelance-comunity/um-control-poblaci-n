@@ -28,6 +28,11 @@
             </tr>
             @endforeach
           </tbody>
+          <tfoot>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Detalle</th>
+          </tfoot>
         </table>
       </div>
     </div>

@@ -30,6 +30,14 @@
                 </tr>
                 @endforeach
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Dirección</th>
+                  <th>Código Postal</th>
+                  <th>Detalle</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>

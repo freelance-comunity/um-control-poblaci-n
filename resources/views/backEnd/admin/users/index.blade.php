@@ -30,6 +30,14 @@
                 </tr>
                 @endforeach
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Foto de perfil</th>
+                  <th>Correo Electrónico</th>
+                  <th>Detalle</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>
