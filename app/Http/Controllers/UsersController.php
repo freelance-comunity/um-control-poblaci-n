@@ -191,4 +191,5 @@ class UsersController extends Controller
 
         return view('backEnd.admin.users.profile');
     }
+
 }

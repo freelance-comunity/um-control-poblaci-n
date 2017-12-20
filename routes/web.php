@@ -66,3 +66,5 @@ Route::get('test', function () {
   Route::get('testui', function(){
     return view('ui');
   });
+
+  Route::get('api/population','Population\\PopulationController@apiPopulation');
