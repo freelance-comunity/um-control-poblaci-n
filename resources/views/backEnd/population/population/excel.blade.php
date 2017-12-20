@@ -4,6 +4,7 @@
     var fileExt = sender.value;
     fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
     if (validExts.indexOf(fileExt) < 0) {
+      event.target.value = '';
       alert("Archivo Seleccionado invalido, por favor selecciona uno de los siguientes tipos de archivos " +
         validExts.toString());
       return false;
@@ -23,7 +24,7 @@
           <div class="uk-margin">
             <div class="uk-position-relative">
               <label class="uk-form-label" for="form-stacked-select">Seleccionar archivo</label>
-              <input type="file" name="excel" onchange="checkfile(this);" class="uk-input"> {!! $errors->first('name', '
+              <input type="file" name="excel" id="excel" onchange="checkfile(this);" class="uk-input"> {!! $errors->first('name', '
               <p class="help-block">:message</p>') !!}
             </div>
           </div>

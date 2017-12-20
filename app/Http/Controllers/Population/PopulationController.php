@@ -212,7 +212,7 @@ class PopulationController extends Controller
                 Alert::success('Se ha cargado el archivo Excel exitosamente!');
                 return redirect('population/population');
             } else {
-                Alert::error('Por favor sube un archivo valido de tippo Excel!');
+                Alert::error('Por favor sube un archivo valido de tipo Excel!');
                 return redirect('population/population');
             }
         } catch (\Exception $e) {
