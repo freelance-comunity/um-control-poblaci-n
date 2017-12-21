@@ -1,4 +1,4 @@
-@extends('layouts.ui') @section('title') Población estudiantil @stop @section('content') @include('backEnd.population.population.excel')
+@extends('layouts.ui') @section('title') Población estudiantil @stop @section('title-section') Población estudiantil @stop @section('content') @include('backEnd.population.population.excel')
 <div class="uk-container uk-container-large">
   <div uk-grid class="uk-child-width-3-4@s uk-child-width-3-4@l">
     <div>

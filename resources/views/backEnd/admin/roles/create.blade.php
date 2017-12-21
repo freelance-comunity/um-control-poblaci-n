@@ -1,4 +1,4 @@
-@extends('layouts.ui') @section('title') Crear nuevo Rol @stop @section('content')
+@extends('layouts.ui') @section('title') Crear nuevo Rol @stop @section('title-section') Crear nuevo Rol @stop @section('content')
 <div class="uk-container uk-container-small">
   <div uk-grid class="uk-child-width-3-4@s uk-child-width-3-4@l">
     <div>

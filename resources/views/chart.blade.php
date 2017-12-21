@@ -1,4 +1,4 @@
-@extends('layouts.ui') @section('content') @section('title-section') Reporte General @endsection
+@extends('layouts.ui') @section('content') @section('title') Reporte General @endsection @section('title-section') Reporte General @endsection
 <div class="uk-container uk-container-large">
   <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-4@xl">
     <div>

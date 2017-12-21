@@ -1,4 +1,4 @@
-@extends('layouts.ui') @section('title') Editar Plantel @stop @section('content')
+@extends('layouts.ui') @section('title') Editar Plantel @stop @section('title-section') Editar Plantel @stop @section('content')
 <div class="uk-container uk-container-small">
   <div uk-grid class="uk-child-width-3-4@s uk-child-width-3-4@l">
     <div>

@@ -1,5 +1,6 @@
 @extends('layouts.ui')
 @section('title') Editar Usuario @stop
+  @section('title-section') Editar Usuario @stop
 @section('content')
 <div class="uk-container uk-container-large">
   <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@l">

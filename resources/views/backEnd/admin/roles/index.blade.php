@@ -1,4 +1,4 @@
-@extends('layouts.ui') @section('title') Roles @stop @section('content')
+@extends('layouts.ui') @section('title') Roles @stop @section('title-section') Roles @stop @section('content')
 <div class="uk-container uk-container-small">
   <div uk-grid class="uk-child-width-2-4@s uk-child-width-2-4@l">
     <div>
