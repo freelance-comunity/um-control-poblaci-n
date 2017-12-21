@@ -46,9 +46,9 @@
             <span class="pmd-checkbox"> Recordar</span>
           </label>
         </div>
-        <span class="pull-right forgot-password">
+        {{-- <span class="pull-right forgot-password">
           <a href="{{ route('password.request') }}">¿Olvidate tu contraseña?</a>
-        </span>
+        </span> --}}
       </div>
       {{-- <a href="index.html" type="button" class="btn pmd-ripple-effect btn-primary btn-block">Entrar</a> --}}
       <button type="submit" class="btn pmd-ripple-effect btn-primary btn-block" name="button">Entrar</button>

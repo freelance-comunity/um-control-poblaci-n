@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/tuxtla', 'HomeController@tuxtla')->name('tuxtla');
+
+Route::get('/tapachula', 'HomeController@tapachula')->name('tapachula');
+Route::get('/cancun', 'HomeController@cancun')->name('cancun');
+
 Route::get('/chart', 'HomeController@chart');
 
 Route::group(['middleware' => ['web']], function () {

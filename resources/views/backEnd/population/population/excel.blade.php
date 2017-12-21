@@ -24,18 +24,14 @@
           <div class="uk-margin">
             <div class="uk-position-relative">
               <label class="uk-form-label" for="form-stacked-select">Seleccionar archivo</label>
-              <input type="file" name="excel" id="excel" onchange="checkfile(this);" class="uk-input"> {!! $errors->first('name', '
+              <input type="file" name="excel" id="excel" onchange="checkfile(this);" class="uk-input"> {!! $errors->first('excel', '
               <p class="help-block">:message</p>') !!}
             </div>
           </div>
-          {{-- <div class="uk-margin">
-            {!! Form::submit('SUBIR', ['class' => 'uk-button uk-button-primary']) !!}
-          </div> --}}
         </fieldset>
     </div>
     <div class="uk-modal-footer uk-text-right">
-      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-      {{-- <button class="uk-button uk-button-primary" type="button">Save</button> --}}
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
       {!! Form::submit('SUBIR', ['class' => 'uk-button uk-button-primary']) !!}
     </div>
     </div>

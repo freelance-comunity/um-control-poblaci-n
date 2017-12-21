@@ -72,9 +72,9 @@ class ReferenceController extends Controller
         $amount = $request->input('amount');
         /*
         *
-        * generateBanorte
+        *
+        *  generate reference Banorte
         */
-        // Generate amount
         $monto = $amount;
         $x = (float)$monto;
         $x_entero = (int)$monto;
@@ -143,7 +143,7 @@ class ReferenceController extends Controller
         echo "<br>";
         /*
         *
-        * generateSantander
+        * generate reference Santander
         */
         // Generate date
         $date_santander = new Carbon($date_limit);
