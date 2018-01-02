@@ -187,7 +187,7 @@ class ReferenceController extends Controller
 
         $importe_condensado_s = $resultado_s%10;
 
-        $referencia_integrada_s = $reference.$suma_s.$importe_condensado_s.'2';
+        $referencia_integrada_s = $reference.$fecha_condensada.$importe_condensado_s.'2';
 
         // Digitos verificadores
         $data_n_s[1] = 11;

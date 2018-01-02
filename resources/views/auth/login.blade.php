@@ -5,7 +5,7 @@
     {{ csrf_field() }}
     <div class="pmd-card-title card-header-border text-center">
       <div class="loginlogo">
-        <a href="javascript:void(0);"><img src="{{asset('themes/images/logo-icon.png')}}" alt="Logo"></a>
+        <a href="javascript:void(0);"><img src="{{asset('images/logo_1.png')}}"  alt="Logo"></a>
       </div>
       <h3>Inicia de sesión <span>con tu<strong> CUENTA</strong></span></h3>
     </div>
@@ -46,9 +46,9 @@
             <span class="pmd-checkbox"> Recordar</span>
           </label>
         </div>
-        <span class="pull-right forgot-password">
+        {{-- <span class="pull-right forgot-password">
           <a href="{{ route('password.request') }}">¿Olvidate tu contraseña?</a>
-        </span>
+        </span> --}}
       </div>
       {{-- <a href="index.html" type="button" class="btn pmd-ripple-effect btn-primary btn-block">Entrar</a> --}}
       <button type="submit" class="btn pmd-ripple-effect btn-primary btn-block" name="button">Entrar</button>
