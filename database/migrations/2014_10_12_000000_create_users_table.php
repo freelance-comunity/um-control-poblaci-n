@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar')->default('default.png');
-            $table->integer('campuses_id')->unsigned();
-			      $table->foreign('campuses_id')->references('id')->on('campuses')->onDelete('cascade');
+            $table->integer('campus_id')->unsigned();
+			      $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

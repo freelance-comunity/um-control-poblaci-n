@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use Alert;
+use User;
 
 class CampusController extends Controller
 {
@@ -127,12 +128,22 @@ class CampusController extends Controller
     {
         try {
             $campus = Campus::findOrFail($id);
+            $users = $campus->users;
 
-            $campus->delete();
+            /**
+             * check if the record is related to any record of the users
+             */
+            if ($users) {
+              Alert::error('No puedes eliminar a '.$campus->name.', ya que cuenta con usuarios relacionados!')->persistent("Cerrar");
 
-            Alert::message('Plantel eliminado exitosamente!')->persistent("Cerrar");
+              return redirect('admin/campus');
+            }else {
+              $campus->delete();
 
-            return redirect('admin/campus');
+              Alert::message('Plantel eliminado exitosamente!')->persistent("Cerrar");
+
+              return redirect('admin/campus');
+            }
         } catch (\Exception $e) {
             Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
 

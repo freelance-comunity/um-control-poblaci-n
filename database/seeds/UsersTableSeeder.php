@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'jncrlsmontejo@gmail.com',
           'password' => bcrypt('secret'),
           'avatar' => 'default.png',
-          'campuses_id' => 1,
+          'campus_id' => 1,
       ]);
     }
 }
