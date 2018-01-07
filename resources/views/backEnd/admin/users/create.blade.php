@@ -43,7 +43,7 @@
 
               <div class="uk-margin">
                 <div class="uk-position-relative">
-                  <label class="uk-form-label" for="form-stacked-select">Plantel</label> {!! Form::select('campuses_id', $campus, null, ['class' => 'uk-select', 'required']) !!} {!! $errors->first('password', '
+                  <label class="uk-form-label" for="form-stacked-select">Plantel</label> {!! Form::select('campus_id', $campus, null, ['class' => 'uk-select', 'required']) !!} {!! $errors->first('password', '
                   <p class="help-block">:message</p>') !!}
                 </div>
               </div>
