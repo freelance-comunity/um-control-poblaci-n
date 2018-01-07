@@ -24,8 +24,9 @@
                   <td>{{ $item->address }}</td>
                   <td>{{ $item->postal_code }}</td>
                   <td>
-                    <a href="{{ url('admin/campus/' . $item->id . '/edit') }}" class="uk-button-small-bottom uk-width-1-1 uk-button uk-button-default">Actualiar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/campus', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-                    ['class' => 'uk-button-small-bottom uk-width-1-1 uk-button uk-button-danger']) !!} {!! Form::close() !!}
+                    <a href="{{ url('admin/campus/' . $item->id . '/edit') }}" class="uk-button-small-bottom uk-width-1-1 uk-button uk-button-default">Actualizar</a>
+                    {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/campus', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
+                    ['class' => 'uk-button-small-bottom uk-width-1-1 uk-button uk-button-danger', 'onClick' => "return confirm('¿Estas segutro de eliminar este registro?')"]) !!} {!! Form::close() !!}
                   </td>
                 </tr>
                 @endforeach

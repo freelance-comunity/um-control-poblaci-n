@@ -24,8 +24,9 @@
                   <td><img src="{{asset('uploads/avatars')}}/{{$item->avatar}}" style="width:60px; height:60px; border-radius:50%"></td>
                   <td>{{ $item->email }}</td>
                   <td>
-                    <a href="{{ url('users/' . $item->id . '/edit') }}" class="uk-button uk-button-small uk-button-default">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['users', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-                    ['class' => 'uk-button uk-button-small uk-button-danger']) !!} {!! Form::close() !!}
+                    <a href="{{ url('users/' . $item->id . '/edit') }}" class="uk-button uk-button-small uk-button-default">Actualizar</a>
+                    {!! Form::open([ 'method'=>'DELETE', 'url' => ['users', $item->id], 'style' => 'display:inline' ]) !!}
+                    {!! Form::submit('Eliminar',['class' => 'uk-button uk-button-small uk-button-danger', 'onClick' => "return confirm('¿Estas segutro de eliminar este registro?')"]) !!} {!! Form::close() !!}
                   </td>
                 </tr>
                 @endforeach

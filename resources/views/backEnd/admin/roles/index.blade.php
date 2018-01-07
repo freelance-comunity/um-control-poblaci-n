@@ -22,8 +22,9 @@
               <td>{{ $item->id }}</td>
               <td>{{ $item->name }}</td>
               <td>
-                <a href="{{ url('roles/' . $item->id . '/edit') }}" class="uk-button uk-button-default">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['roles', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-                ['class' => 'uk-button uk-button-danger']) !!} {!! Form::close() !!}
+                <a href="{{ url('roles/' . $item->id . '/edit') }}" class="uk-button uk-button-default">Actualizar</a>
+                {!! Form::open([ 'method'=>'DELETE', 'url' => ['roles', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
+                ['class' => 'uk-button uk-button-danger', 'onClick' => "return confirm('¿Estas segutro de eliminar este registro?')"]) !!} {!! Form::close() !!}
               </td>
             </tr>
             @endforeach
