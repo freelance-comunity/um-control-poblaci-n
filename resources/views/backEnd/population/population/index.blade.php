@@ -8,7 +8,7 @@
         </div>
         <div class="uk-card-body">
           <div class="uk-overflow-auto">
-            <table class="uk-table uk-table-small uk-table-justify" id="population">
+            <table class="uk-table uk-table-small uk-table-justify" id="populationss">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -47,7 +47,7 @@
 @section('scripts')
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#population').DataTable({
+      $('#populationss').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": "{{ url('api/population') }}",
