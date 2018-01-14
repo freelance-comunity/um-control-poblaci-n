@@ -207,7 +207,7 @@ class PopulationController extends Controller
                       ]);
                         }
                     });
-                });
+                },'UTF-8',true);
 
                 Alert::success('Se ha cargado el archivo Excel exitosamente!');
                 return redirect('population/population');
