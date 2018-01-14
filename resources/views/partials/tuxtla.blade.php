@@ -83,9 +83,9 @@
         </div>
         <div class="uk-card-body">
           @if ($chart7->isEmpty())
-              {!! $chart7->html() !!}
+              No hay datos
           @else
-          No hay datos
+          {!! $chart7->html() !!}
           @endif
         </div>
       </div>
