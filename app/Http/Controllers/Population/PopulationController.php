@@ -16,7 +16,6 @@ use File;
 use DB;
 // use Yajra\Datatables\Facades\Datatables;
 use Datatables;
-use PHPExcel_Settings;
 
 class PopulationController extends Controller
 {
@@ -134,7 +133,6 @@ class PopulationController extends Controller
     public function importExcel(Request $request)
     {
         try {
-            PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
             if ($request->hasFile('excel')) {
                 $this->validate($request, ['excel' => 'required|mimes:xls,xlsx']);
 
