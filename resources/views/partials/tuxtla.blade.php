@@ -82,11 +82,7 @@
           Bajas por sistema
         </div>
         <div class="uk-card-body">
-          @if ($chart7->isEmpty())
-              No hay datos
-          @else
           {!! $chart7->html() !!}
-          @endif
         </div>
       </div>
     </div>
