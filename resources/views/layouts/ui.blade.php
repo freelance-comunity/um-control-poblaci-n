@@ -96,7 +96,7 @@
   <!-- Required Overall Script -->
   <script src="{{asset('ui/js/script.js')}}"></script>
   <!-- Status Updater -->
-  <script src="{{'ui/js/status.js'}}"></script>
+  {{-- <script src="{{'ui/js/status.js'}}"></script> --}}
   <!-- Sample Charts -->
   <script src="{{asset('ui/js/charts.js')}}"></script>
   <!-- Sample Notifications -->
