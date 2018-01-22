@@ -21,7 +21,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
   {!! Charts::styles() !!}
   {{-- Datatables --}}
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> --}}
+  <link rel="stylesheet" href="{{asset('datatablesv2/jquery.dataTables.min.css')}}">
 </head>
 
 <body>
@@ -104,7 +105,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   @include('sweet::alert')
   {{-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> --}}
-  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  {{-- <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> --}}
+  <script src="{{asset('datatablesv2/jquery.dataTables.min.js')}}"></script>
   @yield('scripts')
 </body>
 </html>
