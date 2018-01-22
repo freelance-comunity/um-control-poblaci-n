@@ -50,7 +50,11 @@
       $('#populationss').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": "{{ url('api/population') }}",
+        // "ajax": "{{ url('api/population') }}",
+        "ajax" : {
+                "url" : "{{ url('api/population') }}",
+                "type" : "GET"
+                 },
         "columns": [{
             data: 'id',
             name: 'id'
