@@ -19,7 +19,7 @@
                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus id="exampleInputAmount">
                         @if ($errors->has('email'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong style="color:#dd4b39">{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
                     </div>
