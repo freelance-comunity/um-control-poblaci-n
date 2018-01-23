@@ -53,6 +53,7 @@
         // "ajax": "{{ url('api/population') }}",
         "ajax" : {
                 "url" : "{{ url('api/population') }}",
+                "contentType" : 'application/json; charset=utf-8',
                 "type" : "get"
                  },
         "columns": [{
