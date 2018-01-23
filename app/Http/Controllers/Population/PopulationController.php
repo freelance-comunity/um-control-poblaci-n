@@ -223,8 +223,14 @@ class PopulationController extends Controller
 
     public function apiPopulation()
     {
-        $collection = Population::select(['id', 'month', 'date', 'status', 'campus','enrollment','career','name','system','turn'])->orderBy('enrollment');
-        $population = $collection;
-        return Datatables::of($population)->make(true);
+        try {
+          $collection = Population::select(['id', 'month', 'date', 'status', 'campus','enrollment','career','name','system','turn'])->orderBy('enrollment');
+          $population = $collection;
+          return Datatables::of($population)->make(true);
+        } catch (\Exception $e) {
+          Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
+          return redirect('population/population');
+        }
+
     }
 }
