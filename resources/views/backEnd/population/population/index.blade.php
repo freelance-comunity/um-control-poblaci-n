@@ -53,7 +53,7 @@
         // "ajax": "{{ url('api/population') }}",
         "ajax" : {
                 "url" : "{{ url('api/population') }}",
-                "type" : "GET"
+                "type" : "get"
                  },
         "columns": [{
             data: 'id',
