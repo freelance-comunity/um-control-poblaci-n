@@ -8,7 +8,7 @@
         </div>
         <div class="uk-card-body">
           <div class="uk-overflow-auto">
-            <table class="uk-table uk-table-small uk-table-justify" id="populationss">
+            {{-- <table class="uk-table uk-table-small uk-table-justify" id="populationss">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -37,14 +37,14 @@
                   <th>Turno</th>
                 </tr>
               </tfoot>
-            </table>
+            </table> --}}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-@section('scripts')
+@section('js')
   <script type="text/javascript">
     $(document).ready(function() {
       $('#populationss').DataTable({
