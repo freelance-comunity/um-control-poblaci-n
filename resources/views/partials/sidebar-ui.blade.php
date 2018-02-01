@@ -1,4 +1,8 @@
 <li class="uk-nav-header">
+  Principal
+</li>
+<li><a href="{{url('home')}}">Inicio</a></li>
+<li class="uk-nav-header">
   Planteles
 </li>
 <li><a href="{{route('tuxtla')}}">Tuxtla</a></li>

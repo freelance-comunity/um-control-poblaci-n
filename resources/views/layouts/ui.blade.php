@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>CICAP | UM</title>
+  <title>SICAP | UM</title>
 
   <meta charset="UTF-8">
   <meta name="description" content="Clean and responsive administration panel">
@@ -32,7 +32,7 @@
         <div class="uk-navbar-left">
           <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon></a>
           <a href="{{url('/home')}}" class="uk-navbar-item uk-logo">
-                            CICAP | UM
+                            SICAP | UM
                         </a>
         </div>
         <div class="uk-navbar-right uk-light">
