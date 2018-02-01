@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers\Population;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\Population;
-use App\Campus;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Session;
-use \Excel;
 use Alert;
-use File;
-use DB;
-// use Yajra\Datatables\Facades\Datatables;
+use App\Campus;
+use App\Http\Controllers\Controller;
+use App\Population;
 use Datatables;
+use DB;
+use Illuminate\Http\Request;
+use Session;
+// use Yajra\Datatables\Facades\Datatables;
+use \Excel;
 
 class PopulationController extends Controller
 {
@@ -33,8 +29,8 @@ class PopulationController extends Controller
     public function index()
     {
         $population = Population::all();
-
-        return view('backEnd.population.population.index', compact('population'));
+        
+        return view('backEnd.population.population.population', compact('population'));
     }
 
     /**
@@ -54,7 +50,7 @@ class PopulationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['month' => 'required', 'date' => 'required', 'status' => 'required', 'enrollment' => 'required', 'name' => 'required', 'system' => 'required', 'turn' => 'required', 'semi_day' => 'required', 'scholarship' => 'required', 'quarter' => 'required', 'year_income' => 'required', ]);
+        $this->validate($request, ['month' => 'required', 'date' => 'required', 'status' => 'required', 'enrollment' => 'required', 'name' => 'required', 'system' => 'required', 'turn' => 'required', 'semi_day' => 'required', 'scholarship' => 'required', 'quarter' => 'required', 'year_income' => 'required']);
 
         Population::create($request->all());
 
@@ -101,7 +97,7 @@ class PopulationController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['month' => 'required', 'date' => 'required', 'status' => 'required', 'enrollment' => 'required', 'name' => 'required', 'system' => 'required', 'turn' => 'required', 'semi_day' => 'required', 'scholarship' => 'required', 'quarter' => 'required', 'year_income' => 'required', ]);
+        $this->validate($request, ['month' => 'required', 'date' => 'required', 'status' => 'required', 'enrollment' => 'required', 'name' => 'required', 'system' => 'required', 'turn' => 'required', 'semi_day' => 'required', 'scholarship' => 'required', 'quarter' => 'required', 'year_income' => 'required']);
 
         $population = Population::findOrFail($id);
         $population->update($request->all());
@@ -147,67 +143,74 @@ class PopulationController extends Controller
                         // y saltamos al else para realizar un update del registro ya existente de esa matricula
                         if (!$exists) {
                             $archive = new Population;
-                            $archive->month = $row->mes;
-                            $archive->date = $row->fecha;
-                            $archive->status = $row->status;
-                            $archive->campus = $row->plantel;
-                            $archive->enrollment = $row->matricula;
-                            $archive->career = $row->carrera;
-                            $archive->name = $row->nombre;
-                            $archive->system = $row->sistema;
-                            $archive->turn = $row->turno;
-                            $archive->semi_day = $row->dia;
-                            $archive->scholarship = $row->beca;
-                            $archive->foreign = $row->foranea;
-                            $archive->agreement = $row->convenio;
-                            $archive->average = $row->promedio;
-                            $archive->five_or_more = $row->cinco;
-                            $archive->quarter = $row->cuatri;
-                            $archive->year_income = $row->anioi;
-                            $archive->year_discharge = $row->anioe;
-                            $archive->observations_of_changes = $row->obcambios;
-                            $archive->modification_date = $row->fechamod;
-                            $archive->low = $row->baja;
-                            $archive->low_date = $row->fechabaja;
-                            $archive->observations_low = $row->obbajas;
-                            $archive->intern_letter = $row->carta;
-                            $archive->certificate = $row->certificado;
-                            $archive->title = $row->titulo;
+                            $archive->month = $row->MES;
+                            $archive->date = $row->FECHA;
+                            $archive->status = $row->STATUS;
+                            $archive->campus = $row->PLANTEL;
+                            $archive->enrollment = $row->MATRICULA;
+                            $archive->career = $row->CARRERA;
+                            $archive->name = $row->NOMBRE;
+                            $archive->system = $row->SISTEMA;
+                            $archive->sex = $row->SEXO;
+                            $archive->turn = $row->TURNO;
+                            $archive->semi_day = $row->DIA_SEMI;
+                            $archive->scholarship = $row->BECA;
+                            $archive->foreign = $row->FORANEA;
+                            $archive->agreement = $row->CONVENIO;
+                            $archive->average = $row->PROMEDIO;
+                            $archive->five_or_more = $row->CINCO_MAS;
+                            $archive->quarter = $row->CUATRI;
+                            $archive->year_income = $row->ANIO_INGRESO;
+                            $archive->year_discharge = $row->ANIO_EGRESO;
+                            $archive->observations_of_changes = $row->OBSERVACIONES_CAMBIOS;
+                            $archive->modification_date = $row->FECHA_MODIFICACIONES;
+                            $archive->low = $row->BAJA;
+                            $archive->administrative = $row->ADMINISTRATIVA;
+                            $archive->temporary = $row->TEMPORAL;
+                            $archive->definitive = $row->DEFINITIVA;
+                            $archive->low_date = $row->FECHABAJA;
+                            $archive->observations_low = $row->OBSERVACIONES_BAJA;
+                            $archive->intern_letter = $row->CARTA_PASANTE;
+                            $archive->certificate = $row->CERTIFICADO;
+                            $archive->title = $row->TITULO;
                             $archive->save();
                         } else {
                             DB::table('populations')
-                      ->where('enrollment', $enrollment)
-                      ->update([
-                        'month' => $row->mes,
-                        'date'  => $row->fecha,
-                        'status'=> $row->status,
-                        'campus' =>$row->plantel,
-                        'enrollment' => $row->matricula,
-                        'career' => $row->carrera,
-                        'name' => $row->nombre,
-                        'system' => $row->sistema,
-                        'turn' => $row->turno,
-                        'semi_day' => $row->dia,
-                        'scholarship' => $row->beca,
-                        'foreign' => $row->foranea,
-                        'agreement' => $row->convenio,
-                        'average' => $row->promedio,
-                        'five_or_more' => $row->cinco,
-                        'quarter' => $row->cuatri,
-                        'year_income' => $row->anioi,
-                        'year_discharge' => $row->anioe,
-                        'observations_of_changes' => $row->obcambios,
-                        'modification_date' => $row->fechamod,
-                        'low' => $row->baja,
-                        'low_date' => $row->fechabaja,
-                        'observations_low' => $row->obbajas,
-                        'intern_letter' => $row->carta,
-                        'certificate' => $row->certificado,
-                        'title' => $row->titulo
-                      ]);
+                                ->where('enrollment', $enrollment)
+                                ->update([
+                                    'month' => $row->MES,
+                                    'date' => $row->FECHA,
+                                    'status' => $row->STATUS,
+                                    'campus' => $row->PLANTEL,
+                                    'enrollment' => $row->MATRICULA,
+                                    'career' => $row->CARRERA,
+                                    'name' => $row->NOMBRE,
+                                    'system' => $row->SISTEMA,
+                                    'turn' => $row->TURNO,
+                                    'semi_day' => $row->DIA_SEMI,
+                                    'scholarship' => $row->BECA,
+                                    'foreign' => $row->FORANEA,
+                                    'agreement' => $row->CONVENIO,
+                                    'average' => $row->PROMEDIO,
+                                    'five_or_more' => $row->CINCO_MAS,
+                                    'quarter' => $row->CUATRI,
+                                    'year_income' => $row->ANIO_INGRESO,
+                                    'year_discharge' => $row->ANIO_EGRESO,
+                                    'observations_of_changes' => $row->OBSERVACIONES_CAMBIOS,
+                                    'modification_date' => $row->FECHA_MODIFICACIONES,
+                                    'low' => $row->BAJA,
+                                    'administrative' => $row->ADMINISTRATIVA,
+                                    'temporary' => $row->TEMPORAL,
+                                    'definitive' => $row->DEFINITIVA,
+                                    'low_date' => $row->FECHABAJA,
+                                    'observations_low' => $row->OBSERVACIONES_BAJA,
+                                    'intern_letter' => $row->CARTA_PASANTE,
+                                    'certificate' => $row->CERTIFICADO,
+                                    'title' => $row->TITULO,
+                                ]);
                         }
                     });
-                },'UTF-8',true);
+                }, 'UTF-8', true);
 
                 Alert::success('Se ha cargado el archivo Excel exitosamente!');
                 return redirect('population/population');
@@ -216,7 +219,7 @@ class PopulationController extends Controller
                 return redirect('population/population');
             }
         } catch (\Exception $e) {
-            Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
+            Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
             return redirect('population/population');
         }
     }
@@ -224,12 +227,12 @@ class PopulationController extends Controller
     public function apiPopulation()
     {
         try {
-          $collection = Population::select(['id', 'month', 'date', 'status', 'campus','enrollment','career','name','system','turn'])->orderBy('enrollment');
-          $population = $collection;
-          return Datatables::of($population)->make(true);
+            $collection = Population::select(['id', 'month', 'date', 'status', 'campus', 'enrollment', 'career', 'name', 'system', 'turn'])->orderBy('enrollment');
+            $population = $collection;
+            return Datatables::of($population)->make(true);
         } catch (\Exception $e) {
-          Alert::error(''.$e->getMessage().'')->persistent("Cerrar");
-          return redirect('population/population');
+            Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
+            return redirect('population/population');
         }
 
     }

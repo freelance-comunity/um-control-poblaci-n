@@ -22,6 +22,7 @@ class CreatePopulationsTable extends Migration
             $table->string('career')->nullable();
             $table->string('name')->nullable();
             $table->string('system')->nullable();
+            $table->string('sex')->nullable();
             $table->string('turn')->nullable();
             $table->string('semi_day')->nullable();
             $table->string('scholarship')->nullable();
@@ -35,6 +36,9 @@ class CreatePopulationsTable extends Migration
             $table->text('observations_of_changes')->nullable();;
             $table->date('modification_date')->nullable();;
             $table->string('low')->nullable();
+            $table->string('administrative')->nullable();
+            $table->string('temporary')->nullable();
+            $table->string('definitive')->nullable();
             $table->date('low_date')->nullable();;
             $table->text('observations_low')->nullable();;
             $table->string('intern_letter')->nullable();
