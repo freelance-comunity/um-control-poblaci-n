@@ -130,7 +130,7 @@ class PopulationController extends Controller
     {
         try {
             if ($request->hasFile('excel')) {
-                $this->validate($request, ['excel' => 'required|mimes:xls,xlsx']);
+                $this->validate($request, ['excel' => 'required']);
 
                 \Excel::load($request->excel, function ($reader) {
                     $excel = $reader->get();
