@@ -141,6 +141,7 @@ class PopulationController extends Controller
                         $exists = $query->first();
                         // Checamos si ya existe un registro con la misma matricula, de ser así omitimos este paso
                         // y saltamos al else para realizar un update del registro ya existente de esa matricula
+                        
                         if (!$exists) {
                             $archive = new Population;
                             $archive->month = $row->mes;
