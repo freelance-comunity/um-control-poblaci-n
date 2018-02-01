@@ -27,7 +27,7 @@
       <div class="uk-card uk-card-default uk-card-body">
         <span class="statistics-text">Egresados</span><br />
         <span class="statistics-number">
-                                  {{$actives}}
+                                  {{$graduates}}
                                 <span class="uk-label uk-label-primary">
                                       <span class="ion-arrow-up-c"></span>
         </span>
