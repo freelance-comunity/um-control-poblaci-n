@@ -18,7 +18,7 @@ Población estudiantil
         </div>
         <div class="uk-card-body">
           <div class="uk-overflow-auto">
-            <table class="uk-table uk-table-small uk-table-justify" id="populationss">
+            <table class="uk-table uk-table-small uk-table-justify" id="populations">
               <thead>
                 <tr>
                   <th>ID</th>
