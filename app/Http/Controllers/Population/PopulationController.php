@@ -29,7 +29,7 @@ class PopulationController extends Controller
     public function index()
     {
         $population = Population::all();
-        
+
         return view('backEnd.population.population.population', compact('population'));
     }
 
@@ -132,10 +132,12 @@ class PopulationController extends Controller
             if ($request->hasFile('excel')) {
                 $this->validate($request, ['excel' => 'required']);
 
-                \Excel::load($request->excel, function ($reader) {
+                \Excel::selectSheets('POBLACION')->load($request->excel, function ($reader) {
                     $excel = $reader->get();
                     //iteración
                     $reader->each(function ($row) {
+                        // echo $row->matricula;
+                        // echo "<br>";
                         $enrollment = $row->matricula;
                         $query = DB::table('populations')->where('enrollment', $enrollment);
                         $exists = $query->first();
@@ -179,35 +181,36 @@ class PopulationController extends Controller
                             DB::table('populations')
                                 ->where('enrollment', $enrollment)
                                 ->update([
-                                    'month' => $row->MES,
-                                    'date' => $row->FECHA,
-                                    'status' => $row->STATUS,
-                                    'campus' => $row->PLANTEL,
+                                    'month' => $row->mes,
+                                    'date' => $row->fecha,
+                                    'status' => $row->estatus,
+                                    'campus' => $row->plantel,
                                     'enrollment' => $row->matricula,
-                                    'career' => $row->CARRERA,
-                                    'name' => $row->NOMBRE,
-                                    'system' => $row->SISTEMA,
-                                    'turn' => $row->TURNO,
-                                    'semi_day' => $row->DIA_SEMI,
-                                    'scholarship' => $row->BECA,
-                                    'foreign' => $row->FORANEA,
-                                    'agreement' => $row->CONVENIO,
-                                    'average' => $row->PROMEDIO,
-                                    'five_or_more' => $row->CINCO_MAS,
-                                    'quarter' => $row->CUATRI,
-                                    'year_income' => $row->ANIO_INGRESO,
-                                    'year_discharge' => $row->ANIO_EGRESO,
-                                    'observations_of_changes' => $row->OBSERVACIONES_CAMBIOS,
-                                    'modification_date' => $row->FECHA_MODIFICACIONES,
-                                    'low' => $row->BAJA,
-                                    'administrative' => $row->ADMINISTRATIVA,
-                                    'temporary' => $row->TEMPORAL,
-                                    'definitive' => $row->DEFINITIVA,
-                                    'low_date' => $row->FECHABAJA,
-                                    'observations_low' => $row->OBSERVACIONES_BAJA,
-                                    'intern_letter' => $row->CARTA_PASANTE,
-                                    'certificate' => $row->CERTIFICADO,
-                                    'title' => $row->TITULO,
+                                    'career' => $row->carrera,
+                                    'name' => $row->nombre,
+                                    'system' => $row->sistema,
+                                    'sex' => $row->sexo,
+                                    'turn' => $row->turno,
+                                    'semi_day' => $row->diasemi,
+                                    'scholarship' => $row->beca,
+                                    'foreign' => $row->foranea,
+                                    'agreement' => $row->convenio,
+                                    'average' => $row->promedio,
+                                    'five_or_more' => $row->cinco,
+                                    'quarter' => $row->cuatri,
+                                    'year_income' => $row->anioingreso,
+                                    'year_discharge' => $row->anioegreso,
+                                    'observations_of_changes' => $row->observacionescambios,
+                                    'modification_date' => $row->fechamodificaciones,
+                                    'low' => $row->baja,
+                                    'administrative' => $row->administrativa,
+                                    'temporary' => $row->temporal,
+                                    'definitive' => $row->definitiva,
+                                    'low_date' => $row->fechabaja,
+                                    'observations_low' => $row->observacionesbaja,
+                                    'intern_letter' => $row->cartapasante,
+                                    'certificate' => $row->certificado,
+                                    'title' => $row->titulo,
                                 ]);
                         }
                     });
@@ -215,8 +218,7 @@ class PopulationController extends Controller
 
                 Alert::success('Se ha cargado el archivo Excel exitosamente!');
                 return redirect('population/population');
-            } 
-            else {
+            } else {
                 Alert::error('Por favor sube un archivo valido de tipo Excel!');
                 return redirect('population/population');
             }

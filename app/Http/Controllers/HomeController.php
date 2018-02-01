@@ -48,7 +48,7 @@ class HomeController extends Controller
           ])->count();
 
         // Consultas por plantel
-        $tuxtla = Population::where('campus', 'TUXTLA GUTIERREZ');
+        $tuxtla = Population::where('campus', 'TUXTLA');
         $cancun = Population::where('campus', 'CANCUN');
         $tapachula = Population::where('campus', 'TAPACHULA');
 
