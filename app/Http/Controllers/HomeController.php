@@ -577,82 +577,99 @@ class HomeController extends Controller
         // Consultas por carrera
         $enfermeria = DB::table('populations')->where([
             ['career', '=', 'ENFERMERIA'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+            ['status', '=', 'A'],
         ])->count();
 
         $mecanica = DB::table('populations')->where([
             ['career', '=', 'INGENIERIA MECANICA AUTOMOTRIZ'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $derecho = DB::table('populations')->where([
             ['career', '=', 'DERECHO'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $civil = DB::table('populations')->where([
             ['career', '=', 'INGENIERIA CIVIL'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $sistemas = DB::table('populations')->where([
             ['career', '=', 'INGENIERIA EN SISTEMAS'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $admon = DB::table('populations')->where([
             ['career', '=', 'ADMINISTRACION DE EMPRESAS'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $tsocial = DB::table('populations')->where([
             ['career', '=', 'TRABAJO SOCIAL'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
          $merca = DB::table('populations')->where([
             ['career', '=', 'MERCADOTECNIA'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
          $conta = DB::table('populations')->where([
             ['career', '=', 'CONTADURIA PUBLICA'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
          $informatica = DB::table('populations')->where([
             ['career', '=', 'INFORMATICA ADMINISTRATIVA'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
          $doc_educ = DB::table('populations')->where([
             ['career', '=', 'DOCTORADO EN EDUCACION'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $maes_calidad = DB::table('populations')->where([
             ['career', '=', 'MAESTRIA EN CALIDAD'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
          $maes_educ = DB::table('populations')->where([
             ['career', '=', 'MAESTRIA EN EDUCACION'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $maes_der_fis = DB::table('populations')->where([
             ['career', '=', 'MAESTRIA EN DERECHO FISCAL'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $maes_admon_pub = DB::table('populations')->where([
             ['career', '=', 'MAESTRIA EN ADMINISTRACION PUBLICA'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         $maes_comer_ven = DB::table('populations')->where([
             ['career', '=', 'MAESTRIA EN COMERCIALIZACION Y VENTAS'],
-            ['campus', '=', 'TAPACHULA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
         ])->count();
 
         // Consultas por documentos
