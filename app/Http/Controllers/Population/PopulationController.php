@@ -223,8 +223,9 @@ class PopulationController extends Controller
                 return redirect('population/population');
             }
         } catch (\Exception $e) {
-            Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
-            return redirect('population/population');
+            // Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
+            // return redirect('population/population');
+            return $e->getMessage();
         }
     }
 
@@ -235,8 +236,9 @@ class PopulationController extends Controller
             $population = $collection;
             return Datatables::of($population)->make(true);
         } catch (\Exception $e) {
-            Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
-            return redirect('population/population');
+            // Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
+            // return redirect('population/population');
+            return $e->getMessage();
         }
 
     }
