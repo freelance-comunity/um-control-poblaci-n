@@ -58,4 +58,4 @@
     </div>
   </div>
 </div>
-{!! Charts::scripts() !!} {!! $chart2->script() !!} {!! $chart3->script() !!} {!! $chart4->script() !!} @endsection
+{!! Charts::scripts() !!} {!! Charts::scripts(['google', 'material']) !!} {!! $chart2->script() !!} {!! $chart3->script() !!} {!! $chart4->script() !!} @endsection

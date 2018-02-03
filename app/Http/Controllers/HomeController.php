@@ -76,11 +76,13 @@ class HomeController extends Controller
         $intern = Population::where('intern_letter', 'SI');
         $certificate = Population::where('certificate', 'SI');
 
-        $chart2 = Charts::create('pie', 'highcharts')
+        $chart2 = Charts::create('area', 'c3')
             ->title('ESTATUS')
+            ->responsive(true)
+            ->elementLabel('TOTAL')
             ->labels(['ACTIVOS', 'BAJAS'])
             ->values([$a->count(), $b->count()])
-            ->dimensions(800, 400)
+            ->dimensions(0, 1000)
             ->responsive(true);
 
         $chart3 = Charts::create('bar', 'highcharts')
@@ -91,9 +93,10 @@ class HomeController extends Controller
             ->dimensions(1000, 600)
             ->responsive(true);
 
-        $chart4 = Charts::create('donut', 'highcharts')
+        $chart4 = Charts::create('bar', 'c3')
             ->title('PLANTELES')
             ->labels(['TUXTLA', 'CANCUN', 'TAPACHULA'])
+            ->elementLabel('TOTAL')
             ->values([$tuxtla->count(), $cancun->count(), $tapachula->count()])
             ->dimensions(800, 400)
             ->responsive(true);
