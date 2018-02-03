@@ -52,24 +52,24 @@ class HomeController extends Controller
         $tapachula = Population::where('campus', 'TAPACHULA');
 
         // Consultas por carrera
-        $enfermeria = Population::where('career', 'ENFERMERIA');
-        $mecanica = Population::where('career', 'INGENIERIA MECANICA AUTOMOTRIZ');
-        $derecho = Population::where('career', 'DERECHO');
-        $civil = Population::where('career', 'INGENIERIA CIVIL');
-        $sistemas = Population::where('career', 'INGENIERIA EN SISTEMAS');
-        $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS');
-        $tsocial = Population::where('career', 'TRABAJO SOCIAL');
-        $merca = Population::where('career', 'MERCADOTECNIA');
-        $conta = Population::where('career', 'CONTADURIA PUBLICA');
-        $informatica = Population::where('career', 'INFORMATICA ADMINISTRATIVA');
-        $doc_educ_tab = Population::where('career', 'DOCTORADO EN EDUCACION TABASCO');
-        $doc_educ = Population::where('career', 'DOCTORADO EN EDUCACION');
-        $maes_calidad = Population::where('career', 'MAESTRIA EN CALIDAD');
-        $maes_educ = Population::where('career', 'MAESTRIA EN EDUCACION ');
-        $maes_educ_tab = Population::where('career', 'MAESTRIA EN EDUCACION TABASCO');
-        $maes_der_fis = Population::where('career', 'MAESTRIA EN DERECHO FISCAL');
-        $maes_admon_pub = Population::where('career', 'MAESTRIA EN ADMINISTRACION PUBLICA');
-        $maes_comer_ven = Population::where('career', 'MAESTRIA EN COMERCIALIZACION Y VENTAS');
+        $enfermeria = Population::where('career', 'ENFERMERIA')->where('status', 'A');
+        $mecanica = Population::where('career', 'INGENIERIA MECANICA AUTOMOTRIZ')->where('status', 'A');
+        $derecho = Population::where('career', 'DERECHO')->where('status', 'A')->where('status', 'A');
+        $civil = Population::where('career', 'INGENIERIA CIVIL')->where('status', 'A');
+        $sistemas = Population::where('career', 'INGENIERIA EN SISTEMAS')->where('status', 'A');
+        $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS')->where('status', 'A');
+        $tsocial = Population::where('career', 'TRABAJO SOCIAL')->where('status', 'A');
+        $merca = Population::where('career', 'MERCADOTECNIA')->where('status', 'A');
+        $conta = Population::where('career', 'CONTADURIA PUBLICA')->where('status', 'A');
+        $informatica = Population::where('career', 'INFORMATICA ADMINISTRATIVA')->where('status', 'A');
+        $doc_educ_tab = Population::where('career', 'DOCTORADO EN EDUCACION TABASCO')->where('status', 'A');
+        $doc_educ = Population::where('career', 'DOCTORADO EN EDUCACION')->where('status', 'A');
+        $maes_calidad = Population::where('career', 'MAESTRIA EN CALIDAD')->where('status', 'A');
+        $maes_educ = Population::where('career', 'MAESTRIA EN EDUCACION ')->where('status', 'A');
+        $maes_educ_tab = Population::where('career', 'MAESTRIA EN EDUCACION TABASCO')->where('status', 'A');
+        $maes_der_fis = Population::where('career', 'MAESTRIA EN DERECHO FISCAL')->where('status', 'A');
+        $maes_admon_pub = Population::where('career', 'MAESTRIA EN ADMINISTRACION PUBLICA')->where('status', 'A');
+        $maes_comer_ven = Population::where('career', 'MAESTRIA EN COMERCIALIZACION Y VENTAS')->where('status', 'A');
 
         // Consultas por documentos
         $title = Population::where('title', 'SI');
