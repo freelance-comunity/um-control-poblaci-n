@@ -154,9 +154,9 @@ class PopulationController extends Controller
                             $archive->career = trim($row->carrera);
                             $archive->name = trim($row->nombre);
                             $archive->system = trim($row->sistema);
-                            $archive->sex = $row->sexo;
-                            $archive->turn = $row->turno;
-                            $archive->semi_day = $row->diasemi;
+                            $archive->sex = trim($row->sexo);
+                            $archive->turn = trim($row->turno);
+                            $archive->semi_day = trim($row->diasemi);
                             $archive->scholarship = trim($row->beca);
                             $archive->foreign = trim($row->foranea);
                             $archive->agreement = trim($row->convenio);
@@ -168,49 +168,49 @@ class PopulationController extends Controller
                             $archive->observations_of_changes = trim($row->observacionescambios);
                             $archive->modification_date = $row->fechamodificaciones;
                             $archive->low = trim($row->baja);
-                            $archive->administrative = $row->administrativa;
-                            $archive->temporary = $row->temporal;
-                            $archive->definitive = $row->definitiva;
+                            $archive->administrative = trim($row->administrativa);
+                            $archive->temporary = trim($row->temporal);
+                            $archive->definitive = trim($row->definitiva);
                             $archive->low_date = $row->fechabaja;
-                            $archive->observations_low = $row->observacionesbaja;
-                            $archive->intern_letter = $row->cartapasante;
-                            $archive->certificate = $row->certificado;
-                            $archive->title = $row->titulo;
+                            $archive->observations_low = trim($row->observacionesbaja);
+                            $archive->intern_letter = trim($row->cartapasante);
+                            $archive->certificate = trim($row->certificado);
+                            $archive->title = trim($row->titulo);
                             $archive->save();
                         } else {
                             DB::table('populations')
                                 ->where('enrollment', $enrollment)
                                 ->update([
-                                    'month' => $row->mes,
+                                    'month' => trim($row->mes),
                                     'date' => $row->fecha,
-                                    'status' => $row->estatus,
-                                    'campus' => $row->plantel,
-                                    'enrollment' => $row->matricula,
-                                    'career' => $row->carrera,
-                                    'name' => $row->nombre,
-                                    'system' => $row->sistema,
-                                    'sex' => $row->sexo,
-                                    'turn' => $row->turno,
-                                    'semi_day' => $row->diasemi,
-                                    'scholarship' => $row->beca,
-                                    'foreign' => $row->foranea,
-                                    'agreement' => $row->convenio,
-                                    'average' => $row->promedio,
-                                    'five_or_more' => $row->cinco,
-                                    'quarter' => $row->cuatri,
-                                    'year_income' => $row->anioingreso,
-                                    'year_discharge' => $row->anioegreso,
-                                    'observations_of_changes' => $row->observacionescambios,
+                                    'status' => trim($row->estatus),
+                                    'campus' => trim($row->plantel),
+                                    'enrollment' => trim($row->matricula),
+                                    'career' => trim($row->carrera),
+                                    'name' => trim($row->nombre),
+                                    'system' => trim($row->sistema),
+                                    'sex' => trim($row->sexo),
+                                    'turn' => trim($row->turno),
+                                    'semi_day' => trim($row->diasemi),
+                                    'scholarship' => trim($row->beca),
+                                    'foreign' => trim($row->foranea),
+                                    'agreement' => trim($row->convenio),
+                                    'average' => trim($row->promedio),
+                                    'five_or_more' => trim($row->cinco),
+                                    'quarter' => trim($row->cuatri),
+                                    'year_income' => trim($row->anioingreso),
+                                    'year_discharge' => trim($row->anioegreso),
+                                    'observations_of_changes' => trim($row->observacionescambios),
                                     'modification_date' => $row->fechamodificaciones,
-                                    'low' => $row->baja,
-                                    'administrative' => $row->administrativa,
-                                    'temporary' => $row->temporal,
-                                    'definitive' => $row->definitiva,
+                                    'low' => trim($row->baja),
+                                    'administrative' => trim($row->administrativa),
+                                    'temporary' => trim($row->temporal),
+                                    'definitive' => trim($row->definitiva),
                                     'low_date' => $row->fechabaja,
-                                    'observations_low' => $row->observacionesbaja,
-                                    'intern_letter' => $row->cartapasante,
-                                    'certificate' => $row->certificado,
-                                    'title' => $row->titulo,
+                                    'observations_low' => trim($row->observacionesbaja),
+                                    'intern_letter' => trim($row->cartapasante),
+                                    'certificate' => trim($row->certificado),
+                                    'title' => trim($row->titulo),
                                 ]);
                         }
                     });
