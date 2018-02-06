@@ -77,3 +77,5 @@ Route::get('test', function () {
   });
 
   Route::get('api/population','Population\\PopulationController@apiPopulation');
+
+  Route::post('populationDate/', 'Population\\PopulationController@populationDate')->name('population.date');

@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Session;
 // use Yajra\Datatables\Facades\Datatables;
 use \Excel;
+use Carbon\Carbon;
+use App\User;
+use Charts;
 
 class PopulationController extends Controller
 {
@@ -223,9 +226,9 @@ class PopulationController extends Controller
                 return redirect('population/population');
             }
         } catch (\Exception $e) {
-            // Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
-            // return redirect('population/population');
-            return $e->getMessage();
+            Alert::error('' . $e->getMessage() . '')->persistent("Cerrar");
+            return redirect('population/population');
+            // return $e->getMessage();
         }
     }
 
@@ -240,6 +243,131 @@ class PopulationController extends Controller
             return redirect('population/population');
             // return $e->getMessage();
         }
+    }
 
+    public function populationDate(Request $request)
+    {
+        $start_input = $request->input('start');
+        $end_input = $request->input('end');
+        $start = new Carbon($start_input);
+        $end = new Carbon($end_input);
+        $from = $start->toDateTimeString();
+        $to = $end->toDateTimeString();
+
+        // $current = Population::whereBetween('created_at', array($from, $to))->get();
+        // return $current;
+
+        $a = Population::where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $b = Population::where('status', 'B')->whereBetween('created_at', array($from, $to))->get();
+        $esco = Population::where('system', 'ESCOLARIZADO')->whereBetween('created_at', array($from, $to))->get();
+        $semi = Population::where('system', 'SEMIESCOLARIZADO')->whereBetween('created_at', array($from, $to))->get();
+        $graduates = Population::where('intern_letter', 'SI')->whereBetween('created_at', array($from, $to))->get();
+
+        // Consultas activos y bajas
+        $actives = Population::where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $lows = Population::where('status', 'B')->whereBetween('created_at', array($from, $to))->get();
+
+        // Consulta activos y bajas por sistema educativo
+        // $escoLows = $lows->where('system', 'ESCOLARIZADO');
+        $escoLows = DB::table('populations')->where([
+            ['status', '=', 'B'],
+            ['system', '=', 'ESCOLARIZADO'],
+        ])->whereBetween('created_at', [$from, $to])->count();
+        $semiLows = DB::table('populations')->where([
+            ['status', '=', 'B'],
+            ['system', '=', 'SEMIESCOLARIZADO'],
+        ])->whereBetween('created_at', [$from, $to])->count();
+
+        // Consultas por plantel
+        $tuxtla = Population::where('campus', 'TUXTLA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $cancun = Population::where('campus', 'CANCUN')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $tapachula = Population::where('campus', 'TAPACHULA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+
+        // Consultas por carrera
+        $enfermeria = Population::where('career', 'ENFERMERIA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $mecanica = Population::where('career', 'INGENIERIA MECANICA AUTOMOTRIZ')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $derecho = Population::where('career', 'DERECHO')->where('status', 'A')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $civil = Population::where('career', 'INGENIERIA CIVIL')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $sistemas = Population::where('career', 'INGENIERIA EN SISTEMAS')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $admon = Population::where('career', 'ADMINISTRACION DE EMPRESAS')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $tsocial = Population::where('career', 'TRABAJO SOCIAL')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $merca = Population::where('career', 'MERCADOTECNIA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $conta = Population::where('career', 'CONTADURIA PUBLICA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $informatica = Population::where('career', 'INFORMATICA ADMINISTRATIVA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $doc_educ_tab = Population::where('career', 'DOCTORADO EN EDUCACION TABASCO')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $doc_educ = Population::where('career', 'DOCTORADO EN EDUCACION')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_calidad = Population::where('career', 'MAESTRIA EN CALIDAD')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_educ = Population::where('career', 'MAESTRIA EN EDUCACION ')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_educ_tab = Population::where('career', 'MAESTRIA EN EDUCACION TABASCO')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_der_fis = Population::where('career', 'MAESTRIA EN DERECHO FISCAL')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_admon_pub = Population::where('career', 'MAESTRIA EN ADMINISTRACION PUBLICA')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+        $maes_comer_ven = Population::where('career', 'MAESTRIA EN COMERCIALIZACION Y VENTAS')->where('status', 'A')->whereBetween('created_at', array($from, $to))->get();
+
+        // Consultas por documentos
+        $title = Population::where('title', 'SI')->whereBetween('created_at', array($from, $to))->get();
+        $intern = Population::where('intern_letter', 'SI')->whereBetween('created_at', array($from, $to))->get();
+        $certificate = Population::where('certificate', 'SI')->whereBetween('created_at', array($from, $to))->get();
+
+        $chart2 = Charts::create('area', 'c3')
+            ->title('ESTATUS')
+            ->responsive(true)
+            ->elementLabel('TOTAL')
+            ->labels(['ACTIVOS', 'BAJAS'])
+            ->values([$a->count(), $b->count()])
+            ->dimensions(0, 1000)
+            ->responsive(true);
+
+        $chart3 = Charts::create('bar', 'highcharts')
+            ->title('MODALIDAD')
+            ->labels(['ESCOLARIZADO', 'SEMIESCOLARIZADO'])
+            ->elementLabel('TOTAL')
+            ->values([$esco->count(), $semi->count()])
+            ->dimensions(1000, 600)
+            ->responsive(true);
+
+        $chart4 = Charts::create('bar', 'c3')
+            ->title('PLANTELES')
+            ->labels(['TUXTLA', 'CANCUN', 'TAPACHULA'])
+            ->elementLabel('TOTAL')
+            ->values([$tuxtla->count(), $cancun->count(), $tapachula->count()])
+            ->dimensions(800, 400)
+            ->responsive(true);
+
+        $chart5 = Charts::create('area', 'highcharts')
+            ->title('CARRERAS')
+            ->labels(['ENFERMERIA', 'INGENIERIA MECANICA AUTOMOTRIZ', 'DERECHO', 'INGENIERIA CIVIL', 'INGENIERIA EN SISTEMAS', 'ADMINISTRACIÓN DE EMPRESAS', 'TRABAJO SOCIAL', 'MERCADOTECNIA', 'CONTADURIA PUBLICA',
+                'INFORMATICA ADMINISTRATIVA', 'DOCTORADO EN EDUCACIÓN TABASCO', 'DOCTORADO EN EDUCACIÓN', 'MAESTRÍA EN CALIDAD', 'MESTRÍA EN EDUCACIÓN', 'MAESTRÍA EN EDUCACIÓN TABASCO', 'MAESTRÍA EN DERECHO FISCAL', 'MAESTRÍA EN ADMINISTRACIÓN PUBLICA', 'MAESTRÍA EN COMERCIALIZACIÓN Y VENTAS'])
+            ->elementLabel('TOTAL')
+            ->template("material")
+            ->values([$enfermeria->count(), $mecanica->count(), $derecho->count(), $civil->count(), $sistemas->count(), $admon->count(), $tsocial->count(), $merca->count(), $conta->count(),
+                $informatica->count(), $doc_educ_tab->count(), $doc_educ->count(), $maes_calidad->count(), $maes_educ->count(), $maes_educ_tab->count(), $maes_der_fis->count(), $maes_admon_pub->count(), $maes_comer_ven->count()])
+            ->dimensions(1000, 600)
+            ->responsive(true);
+
+        $chart6 = Charts::create('bar', 'highcharts')
+            ->title('DOCUMENTACIÓN')
+            ->labels(['TITULO', 'CARTA DE PASANTE', 'CERTIFICADO'])
+            ->elementLabel('TOTAL')
+            ->values([$title->count(), $intern->count(), $certificate->count()])
+            ->dimensions(1000, 600)
+            ->responsive(true);
+
+        $chart7 = Charts::create('pie', 'highcharts')
+            ->title('SISTEMA')
+            ->labels(['ESCOLARIZADO', 'SEMIESCOLARIZADO'])
+            ->values([$escoLows, $semiLows])
+            ->dimensions(800, 400)
+            ->responsive(true);
+
+        return view('chart')
+            ->with('actives', $actives)
+            ->with('lows', $lows)
+            ->with('graduates', $graduates)
+            ->with('chart2', $chart2)
+            ->with('chart3', $chart3)
+            ->with('chart4', $chart4)
+            ->with('chart5', $chart5)
+            ->with('chart6', $chart6)
+            ->with('chart7', $chart7);
     }
 }
