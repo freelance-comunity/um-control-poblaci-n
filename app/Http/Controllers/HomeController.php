@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Population;
 use Charts;
 use DB;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -768,6 +770,135 @@ class HomeController extends Controller
             ->with('chart5', $chart5)
             ->with('chart6', $chart6)
             ->with('chart7', $chart7);
+    }
+
+    public function detailCancun()
+    {     
+        // Consultas por carrera
+        $mecanica = DB::table('populations')->where([
+            ['career', '=', 'INGENIERIA MECANICA AUTOMOTRIZ'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+        ])->count();
+
+        $derecho = DB::table('populations')->where([
+            ['career', '=', 'DERECHO'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+        ])->count();
+
+        $admon = DB::table('populations')->where([
+            ['career', '=', 'ADMINISTRACION DE EMPRESAS'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+        ])->count();
+
+        $tsocial = DB::table('populations')->where([
+            ['career', '=', 'TRABAJO SOCIAL'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+        ])->count();
+
+         $conta = DB::table('populations')->where([
+            ['career', '=', 'CONTADURIA PUBLICA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', 'A'],
+        ])->count();
+
+        $chart5 = Charts::create('area', 'highcharts')
+            ->title('CARRERAS')
+            ->labels(['INGENIERIA MECANICA AUTOMOTRIZ', 'DERECHO', 'ADMINISTRACIÓN DE EMPRESAS', 'TRABAJO SOCIAL', 'CONTADURIA PUBLICA'])
+            ->elementLabel('TOTAL')
+            ->template("material")
+            ->values([$mecanica, $derecho, $admon, $tsocial, $conta])
+            ->dimensions(1000, 600)
+            ->responsive(true);
+
+        return view('partials.detailCancun')
+            ->with('chart5', $chart5);
+    }
+
+    public function filterCancun(Request $request)
+    {   
+        $career = $request->input('carrera');
+        $status = $request->input('estatus');
+        if ($career == 1) {
+            $mecanica = DB::table('populations')->where([
+            ['career', '=', 'INGENIERIA MECANICA AUTOMOTRIZ'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', $status],
+            ])->count();
+            $derecho = 0;
+            $admon = 0;
+            $tsocial = 0;
+            $conta = 0;
+        }
+        if ($career == 2) {
+            $mecanica = 0;
+            
+            $derecho = DB::table('populations')->where([
+            ['career', '=', 'DERECHO'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', $status],
+            ])->count();
+            $admon = 0;
+            $tsocial = 0;
+            $conta = 0;
+        }
+        if ($career == 3) {
+            $mecanica = 0;            
+            $derecho = 0;
+            $admon = DB::table('populations')->where([
+            ['career', '=', 'ADMINISTRACION DE EMPRESAS'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', $status],
+            ])->count();
+            $tsocial = 0;
+            $conta = 0;
+        }
+
+        if ($career == 4) {
+            $mecanica = 0;            
+            $derecho = 0;
+            $admon = 0;
+            $tsocial = DB::table('populations')->where([
+            ['career', '=', 'TRABAJO SOCIAL'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', $status],
+            ])->count();
+            $conta = 0;
+        }
+
+        if ($career == 5) {
+            $mecanica = 0;            
+            $derecho = 0;
+            $admon = 0;
+            $tsocial = 0;
+            $conta = DB::table('populations')->where([
+            ['career', '=', 'CONTADURIA PUBLICA'],
+            ['campus', '=', 'CANCUN'],
+            ['status', '=', $status],
+            ])->count();
+        }
+        // else {
+        //     $mecanica = 0;            
+        //     $derecho = 0;
+        //     $admon = 0;
+        //     $tsocial = 0;
+        //     $conta = 0;
+        // }
+
+        $chart5 = Charts::create('area', 'highcharts')
+            ->title('CARRERAS')
+            ->labels(['INGENIERIA MECANICA AUTOMOTRIZ', 'DERECHO', 'ADMINISTRACIÓN DE EMPRESAS', 'TRABAJO SOCIAL', 'CONTADURIA PUBLICA'])
+            ->elementLabel('TOTAL')
+            ->template("material")
+            ->values([$mecanica, $derecho, $admon, $tsocial, $conta])
+            ->dimensions(1000, 600)
+            ->responsive(true);
+
+        return view('partials.detailCancun')
+            ->with('chart5', $chart5);
     }
 
     public function chart()

@@ -59,7 +59,7 @@
     <div>
       <div class="uk-card uk-card-default">
         <div class="uk-card-header">
-          Población por carrera
+          Población por carrera <a href="{{url('detailCancun')}}" class="uk-button uk-button-primary">Ver detalles</a>
         </div>
         <div class="uk-card-body">
           {!! $chart5->html() !!}
