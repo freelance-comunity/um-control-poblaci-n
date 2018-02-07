@@ -805,7 +805,7 @@ class HomeController extends Controller
             ['status', '=', 'A'],
         ])->count();
 
-        $chart5 = Charts::create('area', 'highcharts')
+        $chart5 = Charts::create('bar', 'highcharts')
             ->title('CARRERAS')
             ->labels(['INGENIERIA MECANICA AUTOMOTRIZ', 'DERECHO', 'ADMINISTRACIÓN DE EMPRESAS', 'TRABAJO SOCIAL', 'CONTADURIA PUBLICA'])
             ->elementLabel('TOTAL')
@@ -888,7 +888,7 @@ class HomeController extends Controller
         //     $conta = 0;
         // }
 
-        $chart5 = Charts::create('area', 'highcharts')
+        $chart5 = Charts::create('bar', 'highcharts')
             ->title('CARRERAS')
             ->labels(['INGENIERIA MECANICA AUTOMOTRIZ', 'DERECHO', 'ADMINISTRACIÓN DE EMPRESAS', 'TRABAJO SOCIAL', 'CONTADURIA PUBLICA'])
             ->elementLabel('TOTAL')
